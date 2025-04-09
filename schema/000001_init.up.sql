@@ -1,0 +1,14 @@
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+CREATE TABLE users (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    email VARCHAR(256) NOT NULL,
+    role VARCHAR(256) NOT NULL,
+    password VARCHAR(256) NOT NULL
+);
+
+CREATE TABLE pvz (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    registrationDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    city VARCHAR(256) NOT NULL
+);
