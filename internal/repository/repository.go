@@ -17,18 +17,24 @@ type Pvz interface {
 	CreatePvz(ctx context.Context, city string) (model.Pvz, error)
 }
 
+type Reception interface {
+	CreateReception(ctx context.Context, pvzId uuid.UUID) (model.Reception, error)
+}
+
 type Product interface {
 }
 
 type Repository struct {
 	User
 	Pvz
+	Reception
 	Product
 }
 
 func NewRepositore(db *pgx.Conn) *Repository {
 	return &Repository{
-		User: NewUserPostgres(db),
-		Pvz:  NewPvzPostgres(db),
+		User:      NewUserPostgres(db),
+		Pvz:       NewPvzPostgres(db),
+		Reception: NewReceptionPostgres(db),
 	}
 }

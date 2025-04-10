@@ -9,6 +9,7 @@ import (
 	_ "github.com/lib/pq"
 	"pvz/internal/api/handler"
 	"pvz/internal/db"
+	"pvz/internal/logger"
 	"pvz/internal/repository"
 	"pvz/internal/service"
 	"pvz/server"
@@ -19,12 +20,18 @@ import (
 func main() {
 	gin.SetMode(gin.ReleaseMode)
 
+	if err := logger.Init(); err != nil {
+		log.Fatalf("Logger initialization error: %v", err)
+	}
+	defer logger.Logger.Sync()
+	logger.SugaredLogger.Info("The application is running")
+
 	if err := initConfig(); err != nil {
-		log.Fatalf("error initializing configs: %s", err.Error())
+		logger.SugaredLogger.Fatalw("Error initializing configs", "error", err)
 	}
 
 	if err := godotenv.Load(); err != nil {
-		log.Fatalf("error loading env file: %s", err.Error())
+		logger.SugaredLogger.Fatalw("Error loading env file", "error", err)
 	}
 
 	postgresDb, err := db.NewPostgresDB(db.Config{
@@ -36,7 +43,7 @@ func main() {
 		SSLMode:  viper.GetString("db.sslmode"),
 	})
 	if err != nil {
-		log.Fatalf("failed initializing db: %s", err.Error())
+		logger.SugaredLogger.Fatalw("Failed initializing DB", "error", err)
 	}
 
 	repos := repository.NewRepositore(postgresDb)
@@ -45,7 +52,7 @@ func main() {
 
 	srv := new(server.Server)
 	if err := srv.Run(viper.GetString("port"), handlers.InitRoutes()); err != nil {
-		log.Fatalf("error occured while running server: %s", err.Error())
+		logger.SugaredLogger.Fatalw("Error occurred while running server", "error", err)
 	}
 }
 

@@ -6,6 +6,7 @@ import (
 	"log"
 
 	"github.com/jackc/pgx/v5"
+	"pvz/internal/logger"
 )
 
 type Config struct {
@@ -34,7 +35,6 @@ func NewPostgresDB(cfg Config) (*pgx.Conn, error) {
 		log.Printf("Database ping failed: %v\n", err)
 		return nil, err
 	}
-
-	log.Println("Successfully connected to the database!")
+	logger.SugaredLogger.Info("Successfully connected to the database!")
 	return conn, nil
 }

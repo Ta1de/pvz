@@ -16,13 +16,12 @@ func NewHandler(services *service.Service) *Handler {
 
 func (h *Handler) InitRoutes() *gin.Engine {
 	router := gin.New()
-	router.Use(gin.Logger())
-	router.Use(gin.Recovery())
 
 	router.POST("/dummyLogin", h.dummyLogin)
 	router.POST("/register", h.register)
 	router.POST("/login", h.login)
 	router.POST("/pvz", jwt.AuthMiddleware("moderator"), h.createPvz)
+	router.POST("/reception", jwt.AuthMiddleware("employee"), h.createReception)
 
 	return router
 }

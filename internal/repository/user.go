@@ -7,6 +7,7 @@ import (
 	"github.com/google/uuid"
 	"github.com/jackc/pgx/v5"
 	"golang.org/x/crypto/bcrypt"
+	"pvz/internal/logger"
 	"pvz/internal/repository/model"
 )
 
@@ -29,24 +30,29 @@ func (r *UserPostgres) CreateUser(ctx context.Context, user model.User) (uuid.UU
 
 	err := r.db.QueryRow(ctx, query, user.Email, user.Role, user.Password).Scan(&id)
 	if err != nil {
-		return uuid.Nil, fmt.Errorf("ошибка при добавлении пользователя: %w", err)
+		logger.SugaredLogger.Errorw("Failed to insert user into database", "email", user.Email, "error", err)
+		return uuid.Nil, fmt.Errorf("failed to create user: %w", err)
 	}
 
+	logger.SugaredLogger.Infow("User created in database", "userID", id, "email", user.Email)
 	return id, nil
 }
 
 func (r *UserPostgres) GetUser(ctx context.Context, email, password string) (model.User, error) {
 	var user model.User
+
 	query := `SELECT id, email, role, password FROM users WHERE email = $1`
 	err := r.db.QueryRow(ctx, query, email).Scan(&user.Id, &user.Email, &user.Role, &user.Password)
 	if err != nil {
-		return user, fmt.Errorf("пользователь не найден: %w", err)
+		logger.SugaredLogger.Warnw("User not found", "email", email, "error", err)
+		return user, fmt.Errorf("user not found: %w", err)
 	}
 
-	err = bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(password))
-	if err != nil {
-		return user, fmt.Errorf("неверный пароль: %w", err)
+	if err = bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(password)); err != nil {
+		logger.SugaredLogger.Warnw("Incorrect password attempt", "email", email)
+		return user, fmt.Errorf("invalid password: %w", err)
 	}
 
+	logger.SugaredLogger.Infow("User authentication successful", "userID", user.Id, "email", user.Email)
 	return user, nil
 }

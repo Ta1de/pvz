@@ -8,6 +8,7 @@ import (
 
 	"github.com/dgrijalva/jwt-go"
 	"golang.org/x/crypto/bcrypt"
+	"pvz/internal/logger"
 	"pvz/internal/repository"
 	"pvz/internal/repository/model"
 )
@@ -25,7 +26,8 @@ func NewUserService(repoUser repository.User) *UserService {
 func (s *UserService) CreateUser(ctx context.Context, user model.User) (model.User, error) {
 	hashedPassword, err := GeneratePasswordHash(user.Password)
 	if err != nil {
-		return model.User{}, fmt.Errorf("не удалось хешировать пароль: %w", err)
+		logger.SugaredLogger.Errorw("Password hashing failed", "error", err)
+		return model.User{}, fmt.Errorf("could not hash password: %w", err)
 	}
 
 	user.Password = hashedPassword
@@ -36,14 +38,14 @@ func (s *UserService) CreateUser(ctx context.Context, user model.User) (model.Us
 	}
 
 	user.Id = id
-
+	logger.SugaredLogger.Infow("User successfully created", "userID", user.Id, "email", user.Email)
 	return user, nil
 }
 
 func GeneratePasswordHash(password string) (string, error) {
 	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
 	if err != nil {
-		return "", fmt.Errorf("не удалось хешировать пароль: %w", err)
+		return "", fmt.Errorf("failed to hash password: %w", err)
 	}
 
 	return string(hashedPassword), nil
@@ -52,7 +54,7 @@ func GeneratePasswordHash(password string) (string, error) {
 func (s *UserService) LoginUser(ctx context.Context, email, password string) (string, error) {
 	user, err := s.repoUser.GetUser(ctx, email, password)
 	if err != nil {
-		return "", fmt.Errorf("ошибка при получении пользователя: %w", err)
+		return "", fmt.Errorf("failed to get user: %w", err)
 	}
 
 	claims := &model.TokenClaims{
@@ -68,14 +70,14 @@ func (s *UserService) LoginUser(ctx context.Context, email, password string) (st
 
 	signedToken, err := token.SignedString([]byte(os.Getenv("SIGNING_KEY")))
 	if err != nil {
-		return "", fmt.Errorf("не удалось подписать токен: %w", err)
+		logger.SugaredLogger.Errorw("Failed to sign JWT", "userID", user.Id, "error", err)
+		return "", fmt.Errorf("could not sign token: %w", err)
 	}
 
 	return signedToken, nil
 }
 
 func (s *UserService) DummyLogin(ctx context.Context, role string) (string, error) {
-
 	claims := &model.TokenClaims{
 		StandardClaims: jwt.StandardClaims{
 			ExpiresAt: time.Now().Add(tokenTTL).Unix(),
@@ -88,8 +90,10 @@ func (s *UserService) DummyLogin(ctx context.Context, role string) (string, erro
 
 	signedToken, err := token.SignedString([]byte(os.Getenv("SIGNING_KEY")))
 	if err != nil {
-		return "", fmt.Errorf("не удалось подписать токен: %w", err)
+		logger.SugaredLogger.Errorw("Failed to sign dummy token", "role", role, "error", err)
+		return "", fmt.Errorf("could not sign token: %w", err)
 	}
 
+	logger.SugaredLogger.Infow("Dummy token created", "role", role)
 	return signedToken, nil
 }

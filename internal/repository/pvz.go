@@ -5,6 +5,7 @@ import (
 	"fmt"
 
 	"github.com/jackc/pgx/v5"
+	"pvz/internal/logger"
 	"pvz/internal/repository/model"
 )
 
@@ -25,10 +26,14 @@ func (r *PvzPostgres) CreatePvz(ctx context.Context, city string) (model.Pvz, er
 		RETURNING id, city, registrationDate
 	`
 
+	logger.SugaredLogger.Infow("Inserting new PVZ into database", "city", city)
+
 	err := r.db.QueryRow(ctx, query, city).Scan(&pvz.Id, &pvz.City, &pvz.RegistrationDate)
 	if err != nil {
-		return pvz, fmt.Errorf("ошибка при создании ПВЗ: %w", err)
+		logger.SugaredLogger.Errorw("Failed to insert PVZ", "city", city, "error", err)
+		return pvz, fmt.Errorf("error creating PVZ: %w", err)
 	}
 
+	logger.SugaredLogger.Infow("Successfully inserted PVZ", "pvz", pvz)
 	return pvz, nil
 }

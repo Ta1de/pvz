@@ -3,6 +3,7 @@ package service
 import (
 	"context"
 
+	"github.com/google/uuid"
 	"pvz/internal/repository"
 	"pvz/internal/repository/model"
 )
@@ -17,18 +18,24 @@ type Pvz interface {
 	CreatePvz(ctx context.Context, pvz model.Pvz) (model.Pvz, error)
 }
 
+type Reception interface {
+	CreateReception(ctx context.Context, pvzId uuid.UUID) (model.Reception, error)
+}
+
 type Product interface {
 }
 
 type Service struct {
 	User
 	Pvz
+	Reception
 	Product
 }
 
 func NewService(repos *repository.Repository) *Service {
 	return &Service{
-		User: NewUserService(repos.User),
-		Pvz:  NewPvzService(repos.Pvz),
+		User:      NewUserService(repos.User),
+		Pvz:       NewPvzService(repos.Pvz),
+		Reception: NewReceptionService(repos.Reception),
 	}
 }
