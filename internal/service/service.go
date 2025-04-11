@@ -20,9 +20,12 @@ type Pvz interface {
 
 type Reception interface {
 	CreateReception(ctx context.Context, pvzId uuid.UUID) (model.Reception, error)
+	CloseReception(ctx context.Context, pvzId uuid.UUID) error
 }
 
 type Product interface {
+	AddProduct(ctx context.Context, pvzId uuid.UUID, productType string) (model.Product, error)
+	DeleteLastProduct(ctx context.Context, pvzId uuid.UUID) error
 }
 
 type Service struct {
@@ -37,5 +40,6 @@ func NewService(repos *repository.Repository) *Service {
 		User:      NewUserService(repos.User),
 		Pvz:       NewPvzService(repos.Pvz),
 		Reception: NewReceptionService(repos.Reception),
+		Product:   NewProductService(repos.Product, repos.Reception),
 	}
 }

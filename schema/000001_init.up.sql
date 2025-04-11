@@ -23,6 +23,6 @@ CREATE TABLE reception (
 CREATE TABLE product (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     dateTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    type VARCHAR(256) CHECK (typr IN ('электроника', 'одежда', 'обувь')) NOT NULL,
+    type VARCHAR(256) CHECK (type IN ('электроника', 'одежда', 'обувь')) NOT NULL,
     receptionId UUID REFERENCES reception(id) ON DELETE SET NULL
 );

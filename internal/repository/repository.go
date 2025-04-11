@@ -10,7 +10,7 @@ import (
 
 type User interface {
 	CreateUser(ctx context.Context, user model.User) (uuid.UUID, error)
-	GetUser(ctx context.Context, email, password string) (model.User, error)
+	GetUserByEmail(ctx context.Context, email string) (model.User, error)
 }
 
 type Pvz interface {
@@ -19,9 +19,14 @@ type Pvz interface {
 
 type Reception interface {
 	CreateReception(ctx context.Context, pvzId uuid.UUID) (model.Reception, error)
+	GetInProgressReception(ctx context.Context, pvzId uuid.UUID) (uuid.UUID, error)
+	CloseReception(ctx context.Context, pvzId uuid.UUID) error
 }
 
 type Product interface {
+	CreateProduct(ctx context.Context, product model.Product) (model.Product, error)
+	GetLastProductIdByReception(ctx context.Context, receptionId uuid.UUID) (uuid.UUID, error)
+	DeleteProductById(ctx context.Context, productId uuid.UUID) error
 }
 
 type Repository struct {
@@ -36,5 +41,6 @@ func NewRepositore(db *pgx.Conn) *Repository {
 		User:      NewUserPostgres(db),
 		Pvz:       NewPvzPostgres(db),
 		Reception: NewReceptionPostgres(db),
+		Product:   NewProductPostgres(db),
 	}
 }

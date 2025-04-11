@@ -52,9 +52,14 @@ func GeneratePasswordHash(password string) (string, error) {
 }
 
 func (s *UserService) LoginUser(ctx context.Context, email, password string) (string, error) {
-	user, err := s.repoUser.GetUser(ctx, email, password)
+	user, err := s.repoUser.GetUserByEmail(ctx, email)
 	if err != nil {
 		return "", fmt.Errorf("failed to get user: %w", err)
+	}
+
+	if err = bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(password)); err != nil {
+		logger.SugaredLogger.Warnw("Incorrect password attempt", "email", email)
+		return "", fmt.Errorf("invalid credentials")
 	}
 
 	claims := &model.TokenClaims{
@@ -74,6 +79,7 @@ func (s *UserService) LoginUser(ctx context.Context, email, password string) (st
 		return "", fmt.Errorf("could not sign token: %w", err)
 	}
 
+	logger.SugaredLogger.Infow("User authentication successful", "userID", user.Id, "email", user.Email)
 	return signedToken, nil
 }
 

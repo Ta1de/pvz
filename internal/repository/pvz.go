@@ -28,7 +28,11 @@ func (r *PvzPostgres) CreatePvz(ctx context.Context, city string) (model.Pvz, er
 
 	logger.SugaredLogger.Infow("Inserting new PVZ into database", "city", city)
 
-	err := r.db.QueryRow(ctx, query, city).Scan(&pvz.Id, &pvz.City, &pvz.RegistrationDate)
+	err := r.db.QueryRow(ctx, query, city).Scan(
+		&pvz.Id,
+		&pvz.City,
+		&pvz.RegistrationDate,
+	)
 	if err != nil {
 		logger.SugaredLogger.Errorw("Failed to insert PVZ", "city", city, "error", err)
 		return pvz, fmt.Errorf("error creating PVZ: %w", err)

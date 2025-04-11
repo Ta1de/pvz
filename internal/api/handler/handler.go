@@ -21,7 +21,10 @@ func (h *Handler) InitRoutes() *gin.Engine {
 	router.POST("/register", h.register)
 	router.POST("/login", h.login)
 	router.POST("/pvz", jwt.AuthMiddleware("moderator"), h.createPvz)
-	router.POST("/reception", jwt.AuthMiddleware("employee"), h.createReception)
+	router.POST("/receptions", jwt.AuthMiddleware("employee"), h.createReception)
+	router.POST("/products", jwt.AuthMiddleware("employee"), h.addProduct)
+	router.DELETE("/pvz/:pvzId/delete_last_product", jwt.AuthMiddleware("employee"), h.deleteLastProduct)
+	router.PATCH("/pvz/:pvzId/close_last_reception", jwt.AuthMiddleware("employee"), h.closeReception)
 
 	return router
 }

@@ -165,3 +165,505 @@
 2025-04-10 15-31-35	INFO	service/reception.go:29	Successfully created reception	{"receptionId": "34b811ad-10f6-4461-a3cb-73e59577247d"}
 2025-04-10 15-31-35	INFO	handler/reception.go:31	Reception created successfully	{"receptionId": "34b811ad-10f6-4461-a3cb-73e59577247d", "pvzId": "10801361-c73e-4268-bc5a-f3c7e2e96df2"}
 2025-04-10 15-31-35	WARN	jwt/jwt.go:41	Access forbidden	{"requiredRole": "employee", "claims": {"exp":1744374695,"iat":1744288295,"UserId":"d4443411-c492-497f-b4b0-e0b6021a5417","Role":"moderator"}}
+2025-04-11 11-57-36	INFO	cmd/main.go:27	The application is running
+2025-04-11 11-57-36	INFO	db/db.go:38	Successfully connected to the database!
+2025-04-11 11-57-47	INFO	repository/user.go:36	User created in database	{"userID": "0cd67eaa-ae20-4a1d-abf9-d91b283ea754", "email": "user2@example.com"}
+2025-04-11 11-57-47	INFO	service/user.go:41	User successfully created	{"userID": "0cd67eaa-ae20-4a1d-abf9-d91b283ea754", "email": "user2@example.com"}
+2025-04-11 11-57-47	INFO	handler/user.go:51	User registered successfully	{"userID": "0cd67eaa-ae20-4a1d-abf9-d91b283ea754", "email": "user2@example.com"}
+2025-04-11 11-57-51	INFO	service/user.go:82	User authentication successful	{"userID": "0cd67eaa-ae20-4a1d-abf9-d91b283ea754", "email": "user2@example.com"}
+2025-04-11 11-57-51	INFO	handler/user.go:72	Login successful	{"email": "user2@example.com"}
+2025-04-11 11-58-03	INFO	jwt/jwt.go:46	Token verified	{"userId": "0cd67eaa-ae20-4a1d-abf9-d91b283ea754", "role": "moderator"}
+2025-04-11 11-58-03	INFO	handler/pvz.go:21	Creating new PVZ	{"request": {"City":"Москва"}}
+2025-04-11 11-58-03	INFO	service/pvz.go:21	Calling repository to create PVZ	{"city": "Москва"}
+2025-04-11 11-58-03	INFO	repository/pvz.go:29	Inserting new PVZ into database	{"city": "Москва"}
+2025-04-11 11-58-03	INFO	repository/pvz.go:37	Successfully inserted PVZ	{"pvz": {"Id":"bba90137-fa59-4b6b-bfb4-67d098714fc6","RegistrationDate":"2025-04-11T08:58:03.451974Z","City":"Москва"}}
+2025-04-11 11-58-03	INFO	service/pvz.go:29	Service successfully created PVZ	{"pvz": {"Id":"bba90137-fa59-4b6b-bfb4-67d098714fc6","RegistrationDate":"2025-04-11T08:58:03.451974Z","City":"Москва"}}
+2025-04-11 11-58-03	INFO	handler/pvz.go:34	Successfully created PVZ	{"pvz": {"Id":"bba90137-fa59-4b6b-bfb4-67d098714fc6","RegistrationDate":"2025-04-11 08:58:03","City":"Москва"}}
+2025-04-11 11-58-37	INFO	repository/user.go:36	User created in database	{"userID": "fb4d0dc1-362d-4a5b-8015-2c1c3cafac56", "email": "user@example.com"}
+2025-04-11 11-58-37	INFO	service/user.go:41	User successfully created	{"userID": "fb4d0dc1-362d-4a5b-8015-2c1c3cafac56", "email": "user@example.com"}
+2025-04-11 11-58-37	INFO	handler/user.go:51	User registered successfully	{"userID": "fb4d0dc1-362d-4a5b-8015-2c1c3cafac56", "email": "user@example.com"}
+2025-04-11 11-58-39	INFO	service/user.go:82	User authentication successful	{"userID": "fb4d0dc1-362d-4a5b-8015-2c1c3cafac56", "email": "user@example.com"}
+2025-04-11 11-58-39	INFO	handler/user.go:72	Login successful	{"email": "user@example.com"}
+2025-04-11 11-59-03	INFO	jwt/jwt.go:46	Token verified	{"userId": "fb4d0dc1-362d-4a5b-8015-2c1c3cafac56", "role": "employee"}
+2025-04-11 11-59-03	INFO	service/reception.go:22	Checking for existing in-progress reception	{"pvzId": "bba90137-fa59-4b6b-bfb4-67d098714fc6"}
+2025-04-11 11-59-03	INFO	service/reception.go:33	Calling repo to create reception	{"pvzId": "bba90137-fa59-4b6b-bfb4-67d098714fc6"}
+2025-04-11 11-59-03	INFO	repository/reception.go:28	Creating new reception	{"pvzId": "bba90137-fa59-4b6b-bfb4-67d098714fc6"}
+2025-04-11 11-59-03	INFO	repository/reception.go:42	Successfully created reception	{"receptionId": "677f5ffc-b0d4-4877-a289-be44f7bb14ea"}
+2025-04-11 11-59-03	INFO	service/reception.go:41	Successfully created reception	{"receptionId": "677f5ffc-b0d4-4877-a289-be44f7bb14ea"}
+2025-04-11 11-59-03	INFO	handler/reception.go:31	Reception created successfully	{"receptionId": "677f5ffc-b0d4-4877-a289-be44f7bb14ea", "pvzId": "bba90137-fa59-4b6b-bfb4-67d098714fc6"}
+2025-04-11 11-59-04	INFO	jwt/jwt.go:46	Token verified	{"userId": "fb4d0dc1-362d-4a5b-8015-2c1c3cafac56", "role": "employee"}
+2025-04-11 11-59-04	INFO	service/reception.go:22	Checking for existing in-progress reception	{"pvzId": "bba90137-fa59-4b6b-bfb4-67d098714fc6"}
+2025-04-11 11-59-04	WARN	service/reception.go:29	Reception already in progress for PVZ	{"pvzId": "bba90137-fa59-4b6b-bfb4-67d098714fc6"}
+2025-04-11 11-59-04	ERROR	handler/reception.go:25	Failed to create reception	{"error": "an in-progress reception already exists for PVZ bba90137-fa59-4b6b-bfb4-67d098714fc6"}
+pvz/internal/api/handler.(*Handler).createReception
+	/Users/twitchis/pvz/internal/api/handler/reception.go:25
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/twitchis/go/pkg/mod/github.com/gin-gonic/gin@v1.10.0/context.go:185
+pvz/internal/api/handler.(*Handler).InitRoutes.AuthMiddleware.func2
+	/Users/twitchis/pvz/internal/middleware/jwt/jwt.go:49
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/twitchis/go/pkg/mod/github.com/gin-gonic/gin@v1.10.0/context.go:185
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
+	/Users/twitchis/go/pkg/mod/github.com/gin-gonic/gin@v1.10.0/gin.go:633
+github.com/gin-gonic/gin.(*Engine).ServeHTTP
+	/Users/twitchis/go/pkg/mod/github.com/gin-gonic/gin@v1.10.0/gin.go:589
+net/http.serverHandler.ServeHTTP
+	/opt/goinfre/twitchis/homebrew/Cellar/go/1.24.0/libexec/src/net/http/server.go:3301
+net/http.(*conn).serve
+	/opt/goinfre/twitchis/homebrew/Cellar/go/1.24.0/libexec/src/net/http/server.go:2102
+2025-04-11 12-07-35	INFO	service/user.go:82	User authentication successful	{"userID": "fb4d0dc1-362d-4a5b-8015-2c1c3cafac56", "email": "user@example.com"}
+2025-04-11 12-07-35	INFO	handler/user.go:72	Login successful	{"email": "user@example.com"}
+2025-04-11 12-07-53	INFO	jwt/jwt.go:46	Token verified	{"userId": "fb4d0dc1-362d-4a5b-8015-2c1c3cafac56", "role": "employee"}
+2025-04-11 12-07-53	INFO	service/reception.go:22	Checking for existing in-progress reception	{"pvzId": "bba90137-fa59-4b6b-bfb4-67d098714fc6"}
+2025-04-11 12-07-53	WARN	service/reception.go:29	Reception already in progress for PVZ	{"pvzId": "bba90137-fa59-4b6b-bfb4-67d098714fc6"}
+2025-04-11 12-07-53	ERROR	handler/reception.go:25	Failed to create reception	{"error": "an in-progress reception already exists for PVZ bba90137-fa59-4b6b-bfb4-67d098714fc6"}
+pvz/internal/api/handler.(*Handler).createReception
+	/Users/twitchis/pvz/internal/api/handler/reception.go:25
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/twitchis/go/pkg/mod/github.com/gin-gonic/gin@v1.10.0/context.go:185
+pvz/internal/api/handler.(*Handler).InitRoutes.AuthMiddleware.func2
+	/Users/twitchis/pvz/internal/middleware/jwt/jwt.go:49
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/twitchis/go/pkg/mod/github.com/gin-gonic/gin@v1.10.0/context.go:185
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
+	/Users/twitchis/go/pkg/mod/github.com/gin-gonic/gin@v1.10.0/gin.go:633
+github.com/gin-gonic/gin.(*Engine).ServeHTTP
+	/Users/twitchis/go/pkg/mod/github.com/gin-gonic/gin@v1.10.0/gin.go:589
+net/http.serverHandler.ServeHTTP
+	/opt/goinfre/twitchis/homebrew/Cellar/go/1.24.0/libexec/src/net/http/server.go:3301
+net/http.(*conn).serve
+	/opt/goinfre/twitchis/homebrew/Cellar/go/1.24.0/libexec/src/net/http/server.go:2102
+2025-04-11 12-07-59	INFO	cmd/main.go:27	The application is running
+2025-04-11 12-07-59	INFO	db/db.go:38	Successfully connected to the database!
+2025-04-11 12-08-01	INFO	jwt/jwt.go:46	Token verified	{"userId": "fb4d0dc1-362d-4a5b-8015-2c1c3cafac56", "role": "employee"}
+2025-04-11 12-08-01	INFO	service/reception.go:22	Checking for existing in-progress reception	{"pvzId": "bba90137-fa59-4b6b-bfb4-67d098714fc6"}
+2025-04-11 12-08-01	WARN	service/reception.go:29	Reception already in progress for PVZ	{"pvzId": "bba90137-fa59-4b6b-bfb4-67d098714fc6"}
+2025-04-11 12-08-01	ERROR	handler/reception.go:25	Failed to create reception	{"error": "an in-progress reception already exists for PVZ bba90137-fa59-4b6b-bfb4-67d098714fc6"}
+2025-04-11 12-42-35	INFO	cmd/main.go:27	The application is running
+2025-04-11 12-42-35	INFO	db/db.go:38	Successfully connected to the database!
+2025-04-11 12-43-24	INFO	service/user.go:103	Dummy token created	{"role": "employee"}
+2025-04-11 12-43-24	INFO	handler/user.go:28	Dummy login successful	{"role": "employee"}
+2025-04-11 12-43-24	INFO	repository/user.go:36	User created in database	{"userID": "3891ce76-7675-4c6d-9c61-d2fbf2c7265e", "email": "user@example.com"}
+2025-04-11 12-43-24	INFO	service/user.go:41	User successfully created	{"userID": "3891ce76-7675-4c6d-9c61-d2fbf2c7265e", "email": "user@example.com"}
+2025-04-11 12-43-24	INFO	handler/user.go:51	User registered successfully	{"userID": "3891ce76-7675-4c6d-9c61-d2fbf2c7265e", "email": "user@example.com"}
+2025-04-11 12-43-24	INFO	repository/user.go:36	User created in database	{"userID": "581a0c89-33ef-4c00-8e65-b99fdffff1fa", "email": "user2@example.com"}
+2025-04-11 12-43-24	INFO	service/user.go:41	User successfully created	{"userID": "581a0c89-33ef-4c00-8e65-b99fdffff1fa", "email": "user2@example.com"}
+2025-04-11 12-43-24	INFO	handler/user.go:51	User registered successfully	{"userID": "581a0c89-33ef-4c00-8e65-b99fdffff1fa", "email": "user2@example.com"}
+2025-04-11 12-43-24	INFO	service/user.go:82	User authentication successful	{"userID": "3891ce76-7675-4c6d-9c61-d2fbf2c7265e", "email": "user@example.com"}
+2025-04-11 12-43-24	INFO	handler/user.go:72	Login successful	{"email": "user@example.com"}
+2025-04-11 12-43-24	INFO	service/user.go:82	User authentication successful	{"userID": "581a0c89-33ef-4c00-8e65-b99fdffff1fa", "email": "user2@example.com"}
+2025-04-11 12-43-24	INFO	handler/user.go:72	Login successful	{"email": "user2@example.com"}
+2025-04-11 12-43-24	INFO	jwt/jwt.go:46	Token verified	{"userId": "581a0c89-33ef-4c00-8e65-b99fdffff1fa", "role": "moderator"}
+2025-04-11 12-43-24	INFO	handler/pvz.go:21	Creating new PVZ	{"request": {"City":"Москва"}}
+2025-04-11 12-43-24	INFO	service/pvz.go:21	Calling repository to create PVZ	{"city": "Москва"}
+2025-04-11 12-43-24	INFO	repository/pvz.go:29	Inserting new PVZ into database	{"city": "Москва"}
+2025-04-11 12-43-24	INFO	repository/pvz.go:41	Successfully inserted PVZ	{"pvz": {"Id":"db2aab84-efb5-448e-9a5f-612d96a2dc68","RegistrationDate":"2025-04-11T09:43:24.906158Z","City":"Москва"}}
+2025-04-11 12-43-24	INFO	service/pvz.go:29	Service successfully created PVZ	{"pvz": {"Id":"db2aab84-efb5-448e-9a5f-612d96a2dc68","RegistrationDate":"2025-04-11T09:43:24.906158Z","City":"Москва"}}
+2025-04-11 12-43-24	INFO	handler/pvz.go:34	Successfully created PVZ	{"pvz": {"Id":"db2aab84-efb5-448e-9a5f-612d96a2dc68","RegistrationDate":"2025-04-11 09:43:24","City":"Москва"}}
+2025-04-11 12-43-24	WARN	jwt/jwt.go:41	Access forbidden	{"requiredRole": "moderator", "claims": {"exp":1744451004,"iat":1744364604,"UserId":"3891ce76-7675-4c6d-9c61-d2fbf2c7265e","Role":"employee"}}
+2025-04-11 12-43-24	INFO	jwt/jwt.go:46	Token verified	{"userId": "3891ce76-7675-4c6d-9c61-d2fbf2c7265e", "role": "employee"}
+2025-04-11 12-43-24	INFO	service/reception.go:22	Checking for existing in-progress reception	{"pvzId": "db2aab84-efb5-448e-9a5f-612d96a2dc68"}
+2025-04-11 12-43-24	INFO	service/reception.go:33	Calling repo to create reception	{"pvzId": "db2aab84-efb5-448e-9a5f-612d96a2dc68"}
+2025-04-11 12-43-24	INFO	repository/reception.go:28	Creating new reception	{"pvzId": "db2aab84-efb5-448e-9a5f-612d96a2dc68"}
+2025-04-11 12-43-24	INFO	repository/reception.go:42	Successfully created reception	{"receptionId": "6cdba859-0efe-4d07-9fb7-ae61afc94f1f"}
+2025-04-11 12-43-24	INFO	service/reception.go:41	Successfully created reception	{"receptionId": "6cdba859-0efe-4d07-9fb7-ae61afc94f1f"}
+2025-04-11 12-43-24	INFO	handler/reception.go:31	Reception created successfully	{"receptionId": "6cdba859-0efe-4d07-9fb7-ae61afc94f1f", "pvzId": "db2aab84-efb5-448e-9a5f-612d96a2dc68"}
+2025-04-11 12-43-24	WARN	jwt/jwt.go:41	Access forbidden	{"requiredRole": "employee", "claims": {"exp":1744451004,"iat":1744364604,"UserId":"581a0c89-33ef-4c00-8e65-b99fdffff1fa","Role":"moderator"}}
+2025-04-11 12-43-24	INFO	jwt/jwt.go:46	Token verified	{"userId": "3891ce76-7675-4c6d-9c61-d2fbf2c7265e", "role": "employee"}
+2025-04-11 12-43-24	INFO	service/product.go:26	Adding product	{"pvzId": "db2aab84-efb5-448e-9a5f-612d96a2dc68", "type": "электроника"}
+2025-04-11 12-43-24	INFO	repository/reception.go:73	Checking for existing in-progress reception	{"pvzId": "db2aab84-efb5-448e-9a5f-612d96a2dc68"}
+2025-04-11 12-43-24	WARN	repository/reception.go:78	No in-progress reception found for PVZ	{"pvzId": "db2aab84-efb5-448e-9a5f-612d96a2dc68"}
+2025-04-11 12-43-24	WARN	service/product.go:30	Cannot add product, no open reception	{"pvzId": "db2aab84-efb5-448e-9a5f-612d96a2dc68", "error": "no in-progress reception found: ERROR: column \"pvz_id\" does not exist (SQLSTATE 42703)"}
+2025-04-11 12-43-24	ERROR	handler/product.go:33	Failed to add product	{"error": "no open reception for pvz db2aab84-efb5-448e-9a5f-612d96a2dc68: no in-progress reception found: ERROR: column \"pvz_id\" does not exist (SQLSTATE 42703)", "PvzId": "db2aab84-efb5-448e-9a5f-612d96a2dc68", "type": "электроника"}
+2025-04-11 12-43-24	WARN	jwt/jwt.go:41	Access forbidden	{"requiredRole": "employee", "claims": {"exp":1744451004,"iat":1744364604,"UserId":"581a0c89-33ef-4c00-8e65-b99fdffff1fa","Role":"moderator"}}
+2025-04-11 12-46-16	INFO	cmd/main.go:27	The application is running
+2025-04-11 12-46-16	INFO	db/db.go:38	Successfully connected to the database!
+2025-04-11 12-46-20	INFO	service/user.go:103	Dummy token created	{"role": "employee"}
+2025-04-11 12-46-20	INFO	handler/user.go:28	Dummy login successful	{"role": "employee"}
+2025-04-11 12-46-20	INFO	repository/user.go:36	User created in database	{"userID": "84ca49b4-a61e-4c65-b2f2-57f88821e5f8", "email": "user@example.com"}
+2025-04-11 12-46-20	INFO	service/user.go:41	User successfully created	{"userID": "84ca49b4-a61e-4c65-b2f2-57f88821e5f8", "email": "user@example.com"}
+2025-04-11 12-46-20	INFO	handler/user.go:51	User registered successfully	{"userID": "84ca49b4-a61e-4c65-b2f2-57f88821e5f8", "email": "user@example.com"}
+2025-04-11 12-46-20	INFO	repository/user.go:36	User created in database	{"userID": "b45acadc-a32b-4a99-989e-7cfd1507fce6", "email": "user2@example.com"}
+2025-04-11 12-46-20	INFO	service/user.go:41	User successfully created	{"userID": "b45acadc-a32b-4a99-989e-7cfd1507fce6", "email": "user2@example.com"}
+2025-04-11 12-46-20	INFO	handler/user.go:51	User registered successfully	{"userID": "b45acadc-a32b-4a99-989e-7cfd1507fce6", "email": "user2@example.com"}
+2025-04-11 12-46-20	INFO	service/user.go:82	User authentication successful	{"userID": "84ca49b4-a61e-4c65-b2f2-57f88821e5f8", "email": "user@example.com"}
+2025-04-11 12-46-20	INFO	handler/user.go:72	Login successful	{"email": "user@example.com"}
+2025-04-11 12-46-20	INFO	service/user.go:82	User authentication successful	{"userID": "b45acadc-a32b-4a99-989e-7cfd1507fce6", "email": "user2@example.com"}
+2025-04-11 12-46-20	INFO	handler/user.go:72	Login successful	{"email": "user2@example.com"}
+2025-04-11 12-46-20	INFO	jwt/jwt.go:46	Token verified	{"userId": "b45acadc-a32b-4a99-989e-7cfd1507fce6", "role": "moderator"}
+2025-04-11 12-46-20	INFO	handler/pvz.go:21	Creating new PVZ	{"request": {"City":"Москва"}}
+2025-04-11 12-46-20	INFO	service/pvz.go:21	Calling repository to create PVZ	{"city": "Москва"}
+2025-04-11 12-46-20	INFO	repository/pvz.go:29	Inserting new PVZ into database	{"city": "Москва"}
+2025-04-11 12-46-20	INFO	repository/pvz.go:41	Successfully inserted PVZ	{"pvz": {"Id":"ff76f11f-d33b-4ce8-8e96-a12acc712264","RegistrationDate":"2025-04-11T09:46:20.42554Z","City":"Москва"}}
+2025-04-11 12-46-20	INFO	service/pvz.go:29	Service successfully created PVZ	{"pvz": {"Id":"ff76f11f-d33b-4ce8-8e96-a12acc712264","RegistrationDate":"2025-04-11T09:46:20.42554Z","City":"Москва"}}
+2025-04-11 12-46-20	INFO	handler/pvz.go:34	Successfully created PVZ	{"pvz": {"Id":"ff76f11f-d33b-4ce8-8e96-a12acc712264","RegistrationDate":"2025-04-11 09:46:20","City":"Москва"}}
+2025-04-11 12-46-20	WARN	jwt/jwt.go:41	Access forbidden	{"requiredRole": "moderator", "claims": {"exp":1744451180,"iat":1744364780,"UserId":"84ca49b4-a61e-4c65-b2f2-57f88821e5f8","Role":"employee"}}
+2025-04-11 12-46-20	INFO	jwt/jwt.go:46	Token verified	{"userId": "84ca49b4-a61e-4c65-b2f2-57f88821e5f8", "role": "employee"}
+2025-04-11 12-46-20	INFO	service/reception.go:22	Checking for existing in-progress reception	{"pvzId": "ff76f11f-d33b-4ce8-8e96-a12acc712264"}
+2025-04-11 12-46-20	INFO	service/reception.go:33	Calling repo to create reception	{"pvzId": "ff76f11f-d33b-4ce8-8e96-a12acc712264"}
+2025-04-11 12-46-20	INFO	repository/reception.go:28	Creating new reception	{"pvzId": "ff76f11f-d33b-4ce8-8e96-a12acc712264"}
+2025-04-11 12-46-20	INFO	repository/reception.go:42	Successfully created reception	{"receptionId": "6e97bf87-dc3a-4fe3-a929-8febe20b81de"}
+2025-04-11 12-46-20	INFO	service/reception.go:41	Successfully created reception	{"receptionId": "6e97bf87-dc3a-4fe3-a929-8febe20b81de"}
+2025-04-11 12-46-20	INFO	handler/reception.go:31	Reception created successfully	{"receptionId": "6e97bf87-dc3a-4fe3-a929-8febe20b81de", "pvzId": "ff76f11f-d33b-4ce8-8e96-a12acc712264"}
+2025-04-11 12-46-20	WARN	jwt/jwt.go:41	Access forbidden	{"requiredRole": "employee", "claims": {"exp":1744451180,"iat":1744364780,"UserId":"b45acadc-a32b-4a99-989e-7cfd1507fce6","Role":"moderator"}}
+2025-04-11 12-46-20	INFO	jwt/jwt.go:46	Token verified	{"userId": "84ca49b4-a61e-4c65-b2f2-57f88821e5f8", "role": "employee"}
+2025-04-11 12-46-20	INFO	service/product.go:26	Adding product	{"pvzId": "ff76f11f-d33b-4ce8-8e96-a12acc712264", "type": "электроника"}
+2025-04-11 12-46-20	INFO	repository/reception.go:73	Checking for existing in-progress reception	{"pvzId": "ff76f11f-d33b-4ce8-8e96-a12acc712264"}
+2025-04-11 12-46-20	ERROR	repository/product.go:36	Failed to create product	{"product": {"Id":"00000000-0000-0000-0000-000000000000","DateTime":"0001-01-01T00:00:00Z","Type":"электроника","ReceptionId":"6e97bf87-dc3a-4fe3-a929-8febe20b81de"}, "error": "ERROR: column \"reception_id\" of relation \"product\" does not exist (SQLSTATE 42703)"}
+2025-04-11 12-46-20	ERROR	service/product.go:41	Failed to create product	{"product": {"Id":"00000000-0000-0000-0000-000000000000","DateTime":"0001-01-01T00:00:00Z","Type":"электроника","ReceptionId":"6e97bf87-dc3a-4fe3-a929-8febe20b81de"}, "error": "error inserting product: ERROR: column \"reception_id\" of relation \"product\" does not exist (SQLSTATE 42703)"}
+2025-04-11 12-46-20	ERROR	handler/product.go:33	Failed to add product	{"error": "failed to create product: error inserting product: ERROR: column \"reception_id\" of relation \"product\" does not exist (SQLSTATE 42703)", "PvzId": "ff76f11f-d33b-4ce8-8e96-a12acc712264", "type": "электроника"}
+2025-04-11 12-46-20	WARN	jwt/jwt.go:41	Access forbidden	{"requiredRole": "employee", "claims": {"exp":1744451180,"iat":1744364780,"UserId":"b45acadc-a32b-4a99-989e-7cfd1507fce6","Role":"moderator"}}
+2025-04-11 12-47-02	INFO	cmd/main.go:27	The application is running
+2025-04-11 12-47-02	INFO	db/db.go:38	Successfully connected to the database!
+2025-04-11 12-47-02	FATAL	cmd/main.go:55	Error occurred while running server	{"error": "listen tcp :8080: bind: address already in use"}
+2025-04-11 12-47-08	INFO	cmd/main.go:27	The application is running
+2025-04-11 12-47-08	INFO	db/db.go:38	Successfully connected to the database!
+2025-04-11 12-47-27	INFO	service/user.go:103	Dummy token created	{"role": "employee"}
+2025-04-11 12-47-27	INFO	handler/user.go:28	Dummy login successful	{"role": "employee"}
+2025-04-11 12-47-27	INFO	repository/user.go:36	User created in database	{"userID": "c323974b-7f20-457c-8a66-b7fd1c117a6b", "email": "user@example.com"}
+2025-04-11 12-47-27	INFO	service/user.go:41	User successfully created	{"userID": "c323974b-7f20-457c-8a66-b7fd1c117a6b", "email": "user@example.com"}
+2025-04-11 12-47-27	INFO	handler/user.go:51	User registered successfully	{"userID": "c323974b-7f20-457c-8a66-b7fd1c117a6b", "email": "user@example.com"}
+2025-04-11 12-47-27	INFO	repository/user.go:36	User created in database	{"userID": "8c42959b-32e8-470d-ba54-36495657011c", "email": "user2@example.com"}
+2025-04-11 12-47-27	INFO	service/user.go:41	User successfully created	{"userID": "8c42959b-32e8-470d-ba54-36495657011c", "email": "user2@example.com"}
+2025-04-11 12-47-27	INFO	handler/user.go:51	User registered successfully	{"userID": "8c42959b-32e8-470d-ba54-36495657011c", "email": "user2@example.com"}
+2025-04-11 12-47-27	INFO	service/user.go:82	User authentication successful	{"userID": "c323974b-7f20-457c-8a66-b7fd1c117a6b", "email": "user@example.com"}
+2025-04-11 12-47-27	INFO	handler/user.go:72	Login successful	{"email": "user@example.com"}
+2025-04-11 12-47-27	INFO	service/user.go:82	User authentication successful	{"userID": "8c42959b-32e8-470d-ba54-36495657011c", "email": "user2@example.com"}
+2025-04-11 12-47-27	INFO	handler/user.go:72	Login successful	{"email": "user2@example.com"}
+2025-04-11 12-47-27	INFO	jwt/jwt.go:46	Token verified	{"userId": "8c42959b-32e8-470d-ba54-36495657011c", "role": "moderator"}
+2025-04-11 12-47-27	INFO	handler/pvz.go:21	Creating new PVZ	{"request": {"City":"Москва"}}
+2025-04-11 12-47-27	INFO	service/pvz.go:21	Calling repository to create PVZ	{"city": "Москва"}
+2025-04-11 12-47-27	INFO	repository/pvz.go:29	Inserting new PVZ into database	{"city": "Москва"}
+2025-04-11 12-47-27	INFO	repository/pvz.go:41	Successfully inserted PVZ	{"pvz": {"Id":"da901c83-6c05-44f0-a28f-7c701e3af735","RegistrationDate":"2025-04-11T09:47:27.378373Z","City":"Москва"}}
+2025-04-11 12-47-27	INFO	service/pvz.go:29	Service successfully created PVZ	{"pvz": {"Id":"da901c83-6c05-44f0-a28f-7c701e3af735","RegistrationDate":"2025-04-11T09:47:27.378373Z","City":"Москва"}}
+2025-04-11 12-47-27	INFO	handler/pvz.go:34	Successfully created PVZ	{"pvz": {"Id":"da901c83-6c05-44f0-a28f-7c701e3af735","RegistrationDate":"2025-04-11 09:47:27","City":"Москва"}}
+2025-04-11 12-47-27	WARN	jwt/jwt.go:41	Access forbidden	{"requiredRole": "moderator", "claims": {"exp":1744451247,"iat":1744364847,"UserId":"c323974b-7f20-457c-8a66-b7fd1c117a6b","Role":"employee"}}
+2025-04-11 12-47-27	INFO	jwt/jwt.go:46	Token verified	{"userId": "c323974b-7f20-457c-8a66-b7fd1c117a6b", "role": "employee"}
+2025-04-11 12-47-27	INFO	service/reception.go:22	Checking for existing in-progress reception	{"pvzId": "da901c83-6c05-44f0-a28f-7c701e3af735"}
+2025-04-11 12-47-27	INFO	service/reception.go:33	Calling repo to create reception	{"pvzId": "da901c83-6c05-44f0-a28f-7c701e3af735"}
+2025-04-11 12-47-27	INFO	repository/reception.go:28	Creating new reception	{"pvzId": "da901c83-6c05-44f0-a28f-7c701e3af735"}
+2025-04-11 12-47-27	INFO	repository/reception.go:42	Successfully created reception	{"receptionId": "1c36e875-8ea9-4838-93d3-fa849606b6c7"}
+2025-04-11 12-47-27	INFO	service/reception.go:41	Successfully created reception	{"receptionId": "1c36e875-8ea9-4838-93d3-fa849606b6c7"}
+2025-04-11 12-47-27	INFO	handler/reception.go:31	Reception created successfully	{"receptionId": "1c36e875-8ea9-4838-93d3-fa849606b6c7", "pvzId": "da901c83-6c05-44f0-a28f-7c701e3af735"}
+2025-04-11 12-47-27	WARN	jwt/jwt.go:41	Access forbidden	{"requiredRole": "employee", "claims": {"exp":1744451247,"iat":1744364847,"UserId":"8c42959b-32e8-470d-ba54-36495657011c","Role":"moderator"}}
+2025-04-11 12-47-27	INFO	jwt/jwt.go:46	Token verified	{"userId": "c323974b-7f20-457c-8a66-b7fd1c117a6b", "role": "employee"}
+2025-04-11 12-47-27	INFO	service/product.go:26	Adding product	{"pvzId": "da901c83-6c05-44f0-a28f-7c701e3af735", "type": "электроника"}
+2025-04-11 12-47-27	INFO	repository/reception.go:73	Checking for existing in-progress reception	{"pvzId": "da901c83-6c05-44f0-a28f-7c701e3af735"}
+2025-04-11 12-47-27	ERROR	repository/product.go:36	Failed to create product	{"product": {"Id":"00000000-0000-0000-0000-000000000000","DateTime":"0001-01-01T00:00:00Z","Type":"электроника","ReceptionId":"1c36e875-8ea9-4838-93d3-fa849606b6c7"}, "error": "ERROR: column \"reception_id\" of relation \"product\" does not exist (SQLSTATE 42703)"}
+2025-04-11 12-47-27	ERROR	service/product.go:41	Failed to create product	{"product": {"Id":"00000000-0000-0000-0000-000000000000","DateTime":"0001-01-01T00:00:00Z","Type":"электроника","ReceptionId":"1c36e875-8ea9-4838-93d3-fa849606b6c7"}, "error": "error inserting product: ERROR: column \"reception_id\" of relation \"product\" does not exist (SQLSTATE 42703)"}
+2025-04-11 12-47-27	ERROR	handler/product.go:33	Failed to add product	{"error": "failed to create product: error inserting product: ERROR: column \"reception_id\" of relation \"product\" does not exist (SQLSTATE 42703)", "PvzId": "da901c83-6c05-44f0-a28f-7c701e3af735", "type": "электроника"}
+2025-04-11 12-47-27	WARN	jwt/jwt.go:41	Access forbidden	{"requiredRole": "employee", "claims": {"exp":1744451247,"iat":1744364847,"UserId":"8c42959b-32e8-470d-ba54-36495657011c","Role":"moderator"}}
+2025-04-11 12-48-55	INFO	cmd/main.go:27	The application is running
+2025-04-11 12-48-55	INFO	db/db.go:38	Successfully connected to the database!
+2025-04-11 12-48-57	INFO	service/user.go:103	Dummy token created	{"role": "employee"}
+2025-04-11 12-48-57	INFO	handler/user.go:28	Dummy login successful	{"role": "employee"}
+2025-04-11 12-48-57	INFO	repository/user.go:36	User created in database	{"userID": "8d571a24-f99b-4e3e-b3fc-ffb289e98d4b", "email": "user@example.com"}
+2025-04-11 12-48-57	INFO	service/user.go:41	User successfully created	{"userID": "8d571a24-f99b-4e3e-b3fc-ffb289e98d4b", "email": "user@example.com"}
+2025-04-11 12-48-57	INFO	handler/user.go:51	User registered successfully	{"userID": "8d571a24-f99b-4e3e-b3fc-ffb289e98d4b", "email": "user@example.com"}
+2025-04-11 12-48-57	INFO	repository/user.go:36	User created in database	{"userID": "9c4e7498-f42b-446e-99dc-78cc297d1674", "email": "user2@example.com"}
+2025-04-11 12-48-57	INFO	service/user.go:41	User successfully created	{"userID": "9c4e7498-f42b-446e-99dc-78cc297d1674", "email": "user2@example.com"}
+2025-04-11 12-48-57	INFO	handler/user.go:51	User registered successfully	{"userID": "9c4e7498-f42b-446e-99dc-78cc297d1674", "email": "user2@example.com"}
+2025-04-11 12-48-57	INFO	service/user.go:82	User authentication successful	{"userID": "8d571a24-f99b-4e3e-b3fc-ffb289e98d4b", "email": "user@example.com"}
+2025-04-11 12-48-57	INFO	handler/user.go:72	Login successful	{"email": "user@example.com"}
+2025-04-11 12-48-57	INFO	service/user.go:82	User authentication successful	{"userID": "9c4e7498-f42b-446e-99dc-78cc297d1674", "email": "user2@example.com"}
+2025-04-11 12-48-57	INFO	handler/user.go:72	Login successful	{"email": "user2@example.com"}
+2025-04-11 12-48-57	INFO	jwt/jwt.go:46	Token verified	{"userId": "9c4e7498-f42b-446e-99dc-78cc297d1674", "role": "moderator"}
+2025-04-11 12-48-57	INFO	handler/pvz.go:21	Creating new PVZ	{"request": {"City":"Москва"}}
+2025-04-11 12-48-57	INFO	service/pvz.go:21	Calling repository to create PVZ	{"city": "Москва"}
+2025-04-11 12-48-57	INFO	repository/pvz.go:29	Inserting new PVZ into database	{"city": "Москва"}
+2025-04-11 12-48-57	INFO	repository/pvz.go:41	Successfully inserted PVZ	{"pvz": {"Id":"7c20ec34-cbf8-4d0e-b27d-99529601b88a","RegistrationDate":"2025-04-11T09:48:57.781358Z","City":"Москва"}}
+2025-04-11 12-48-57	INFO	service/pvz.go:29	Service successfully created PVZ	{"pvz": {"Id":"7c20ec34-cbf8-4d0e-b27d-99529601b88a","RegistrationDate":"2025-04-11T09:48:57.781358Z","City":"Москва"}}
+2025-04-11 12-48-57	INFO	handler/pvz.go:34	Successfully created PVZ	{"pvz": {"Id":"7c20ec34-cbf8-4d0e-b27d-99529601b88a","RegistrationDate":"2025-04-11 09:48:57","City":"Москва"}}
+2025-04-11 12-48-57	WARN	jwt/jwt.go:41	Access forbidden	{"requiredRole": "moderator", "claims": {"exp":1744451337,"iat":1744364937,"UserId":"8d571a24-f99b-4e3e-b3fc-ffb289e98d4b","Role":"employee"}}
+2025-04-11 12-48-57	INFO	jwt/jwt.go:46	Token verified	{"userId": "8d571a24-f99b-4e3e-b3fc-ffb289e98d4b", "role": "employee"}
+2025-04-11 12-48-57	INFO	service/reception.go:22	Checking for existing in-progress reception	{"pvzId": "7c20ec34-cbf8-4d0e-b27d-99529601b88a"}
+2025-04-11 12-48-57	INFO	service/reception.go:33	Calling repo to create reception	{"pvzId": "7c20ec34-cbf8-4d0e-b27d-99529601b88a"}
+2025-04-11 12-48-57	INFO	repository/reception.go:28	Creating new reception	{"pvzId": "7c20ec34-cbf8-4d0e-b27d-99529601b88a"}
+2025-04-11 12-48-57	INFO	repository/reception.go:42	Successfully created reception	{"receptionId": "bcd2e673-0dc8-4b18-b320-fc19177c9b32"}
+2025-04-11 12-48-57	INFO	service/reception.go:41	Successfully created reception	{"receptionId": "bcd2e673-0dc8-4b18-b320-fc19177c9b32"}
+2025-04-11 12-48-57	INFO	handler/reception.go:31	Reception created successfully	{"receptionId": "bcd2e673-0dc8-4b18-b320-fc19177c9b32", "pvzId": "7c20ec34-cbf8-4d0e-b27d-99529601b88a"}
+2025-04-11 12-48-57	WARN	jwt/jwt.go:41	Access forbidden	{"requiredRole": "employee", "claims": {"exp":1744451337,"iat":1744364937,"UserId":"9c4e7498-f42b-446e-99dc-78cc297d1674","Role":"moderator"}}
+2025-04-11 12-48-57	INFO	jwt/jwt.go:46	Token verified	{"userId": "8d571a24-f99b-4e3e-b3fc-ffb289e98d4b", "role": "employee"}
+2025-04-11 12-48-57	INFO	service/product.go:26	Adding product	{"pvzId": "7c20ec34-cbf8-4d0e-b27d-99529601b88a", "type": "электроника"}
+2025-04-11 12-48-57	INFO	repository/reception.go:73	Checking for existing in-progress reception	{"pvzId": "7c20ec34-cbf8-4d0e-b27d-99529601b88a"}
+2025-04-11 12-48-57	ERROR	repository/product.go:36	Failed to create product	{"product": {"Id":"00000000-0000-0000-0000-000000000000","DateTime":"0001-01-01T00:00:00Z","Type":"электроника","ReceptionId":"bcd2e673-0dc8-4b18-b320-fc19177c9b32"}, "error": "ERROR: column \"reception_id\" does not exist (SQLSTATE 42703)"}
+2025-04-11 12-48-57	ERROR	service/product.go:41	Failed to create product	{"product": {"Id":"00000000-0000-0000-0000-000000000000","DateTime":"0001-01-01T00:00:00Z","Type":"электроника","ReceptionId":"bcd2e673-0dc8-4b18-b320-fc19177c9b32"}, "error": "error inserting product: ERROR: column \"reception_id\" does not exist (SQLSTATE 42703)"}
+2025-04-11 12-48-57	ERROR	handler/product.go:33	Failed to add product	{"error": "failed to create product: error inserting product: ERROR: column \"reception_id\" does not exist (SQLSTATE 42703)", "PvzId": "7c20ec34-cbf8-4d0e-b27d-99529601b88a", "type": "электроника"}
+2025-04-11 12-48-57	WARN	jwt/jwt.go:41	Access forbidden	{"requiredRole": "employee", "claims": {"exp":1744451337,"iat":1744364937,"UserId":"9c4e7498-f42b-446e-99dc-78cc297d1674","Role":"moderator"}}
+2025-04-11 12-49-48	INFO	cmd/main.go:27	The application is running
+2025-04-11 12-49-48	INFO	db/db.go:38	Successfully connected to the database!
+2025-04-11 12-49-59	INFO	service/user.go:103	Dummy token created	{"role": "employee"}
+2025-04-11 12-49-59	INFO	handler/user.go:28	Dummy login successful	{"role": "employee"}
+2025-04-11 12-49-59	INFO	repository/user.go:36	User created in database	{"userID": "215f4a00-338c-4f45-b2cb-7c20b1717c0b", "email": "user@example.com"}
+2025-04-11 12-49-59	INFO	service/user.go:41	User successfully created	{"userID": "215f4a00-338c-4f45-b2cb-7c20b1717c0b", "email": "user@example.com"}
+2025-04-11 12-49-59	INFO	handler/user.go:51	User registered successfully	{"userID": "215f4a00-338c-4f45-b2cb-7c20b1717c0b", "email": "user@example.com"}
+2025-04-11 12-49-59	INFO	repository/user.go:36	User created in database	{"userID": "7c0681aa-9a1c-482a-b213-8b71493bf44c", "email": "user2@example.com"}
+2025-04-11 12-49-59	INFO	service/user.go:41	User successfully created	{"userID": "7c0681aa-9a1c-482a-b213-8b71493bf44c", "email": "user2@example.com"}
+2025-04-11 12-49-59	INFO	handler/user.go:51	User registered successfully	{"userID": "7c0681aa-9a1c-482a-b213-8b71493bf44c", "email": "user2@example.com"}
+2025-04-11 12-49-59	INFO	service/user.go:82	User authentication successful	{"userID": "215f4a00-338c-4f45-b2cb-7c20b1717c0b", "email": "user@example.com"}
+2025-04-11 12-49-59	INFO	handler/user.go:72	Login successful	{"email": "user@example.com"}
+2025-04-11 12-49-59	INFO	service/user.go:82	User authentication successful	{"userID": "7c0681aa-9a1c-482a-b213-8b71493bf44c", "email": "user2@example.com"}
+2025-04-11 12-49-59	INFO	handler/user.go:72	Login successful	{"email": "user2@example.com"}
+2025-04-11 12-49-59	INFO	jwt/jwt.go:46	Token verified	{"userId": "7c0681aa-9a1c-482a-b213-8b71493bf44c", "role": "moderator"}
+2025-04-11 12-49-59	INFO	handler/pvz.go:21	Creating new PVZ	{"request": {"City":"Москва"}}
+2025-04-11 12-49-59	INFO	service/pvz.go:21	Calling repository to create PVZ	{"city": "Москва"}
+2025-04-11 12-49-59	INFO	repository/pvz.go:29	Inserting new PVZ into database	{"city": "Москва"}
+2025-04-11 12-49-59	INFO	repository/pvz.go:41	Successfully inserted PVZ	{"pvz": {"Id":"fde627c0-e638-4685-847e-67e83631c912","RegistrationDate":"2025-04-11T09:49:59.358709Z","City":"Москва"}}
+2025-04-11 12-49-59	INFO	service/pvz.go:29	Service successfully created PVZ	{"pvz": {"Id":"fde627c0-e638-4685-847e-67e83631c912","RegistrationDate":"2025-04-11T09:49:59.358709Z","City":"Москва"}}
+2025-04-11 12-49-59	INFO	handler/pvz.go:34	Successfully created PVZ	{"pvz": {"Id":"fde627c0-e638-4685-847e-67e83631c912","RegistrationDate":"2025-04-11 09:49:59","City":"Москва"}}
+2025-04-11 12-49-59	WARN	jwt/jwt.go:41	Access forbidden	{"requiredRole": "moderator", "claims": {"exp":1744451399,"iat":1744364999,"UserId":"215f4a00-338c-4f45-b2cb-7c20b1717c0b","Role":"employee"}}
+2025-04-11 12-49-59	INFO	jwt/jwt.go:46	Token verified	{"userId": "215f4a00-338c-4f45-b2cb-7c20b1717c0b", "role": "employee"}
+2025-04-11 12-49-59	INFO	service/reception.go:22	Checking for existing in-progress reception	{"pvzId": "fde627c0-e638-4685-847e-67e83631c912"}
+2025-04-11 12-49-59	INFO	service/reception.go:33	Calling repo to create reception	{"pvzId": "fde627c0-e638-4685-847e-67e83631c912"}
+2025-04-11 12-49-59	INFO	repository/reception.go:28	Creating new reception	{"pvzId": "fde627c0-e638-4685-847e-67e83631c912"}
+2025-04-11 12-49-59	INFO	repository/reception.go:42	Successfully created reception	{"receptionId": "2a63977c-81fe-4b6a-9056-62411b13ce92"}
+2025-04-11 12-49-59	INFO	service/reception.go:41	Successfully created reception	{"receptionId": "2a63977c-81fe-4b6a-9056-62411b13ce92"}
+2025-04-11 12-49-59	INFO	handler/reception.go:31	Reception created successfully	{"receptionId": "2a63977c-81fe-4b6a-9056-62411b13ce92", "pvzId": "fde627c0-e638-4685-847e-67e83631c912"}
+2025-04-11 12-49-59	WARN	jwt/jwt.go:41	Access forbidden	{"requiredRole": "employee", "claims": {"exp":1744451399,"iat":1744364999,"UserId":"7c0681aa-9a1c-482a-b213-8b71493bf44c","Role":"moderator"}}
+2025-04-11 12-49-59	INFO	jwt/jwt.go:46	Token verified	{"userId": "215f4a00-338c-4f45-b2cb-7c20b1717c0b", "role": "employee"}
+2025-04-11 12-49-59	INFO	service/product.go:26	Adding product	{"pvzId": "fde627c0-e638-4685-847e-67e83631c912", "type": "электроника"}
+2025-04-11 12-49-59	INFO	repository/reception.go:73	Checking for existing in-progress reception	{"pvzId": "fde627c0-e638-4685-847e-67e83631c912"}
+2025-04-11 12-49-59	INFO	repository/product.go:40	Successfully created product	{"product": {"Id":"71e56cc4-7b5f-4b58-a218-21b406f3b162","DateTime":"2025-04-11T09:49:59.499334Z","Type":"электроника","ReceptionId":"2a63977c-81fe-4b6a-9056-62411b13ce92"}}
+2025-04-11 12-49-59	INFO	service/product.go:45	Product created successfully	{"productId": "71e56cc4-7b5f-4b58-a218-21b406f3b162", "receptionId": "2a63977c-81fe-4b6a-9056-62411b13ce92"}
+2025-04-11 12-49-59	WARN	jwt/jwt.go:41	Access forbidden	{"requiredRole": "employee", "claims": {"exp":1744451399,"iat":1744364999,"UserId":"7c0681aa-9a1c-482a-b213-8b71493bf44c","Role":"moderator"}}
+2025-04-11 13-21-18	INFO	cmd/main.go:27	The application is running
+2025-04-11 13-21-18	INFO	db/db.go:38	Successfully connected to the database!
+2025-04-11 13-24-27	INFO	service/user.go:103	Dummy token created	{"role": "employee"}
+2025-04-11 13-24-27	INFO	handler/user.go:28	Dummy login successful	{"role": "employee"}
+2025-04-11 13-24-27	INFO	repository/user.go:36	User created in database	{"userID": "9d8e96fe-70ac-45ac-8a85-806210de454c", "email": "user@example.com"}
+2025-04-11 13-24-27	INFO	service/user.go:41	User successfully created	{"userID": "9d8e96fe-70ac-45ac-8a85-806210de454c", "email": "user@example.com"}
+2025-04-11 13-24-27	INFO	handler/user.go:51	User registered successfully	{"userID": "9d8e96fe-70ac-45ac-8a85-806210de454c", "email": "user@example.com"}
+2025-04-11 13-24-28	INFO	repository/user.go:36	User created in database	{"userID": "05830637-0a54-48d8-b0df-9d372ff9de85", "email": "user2@example.com"}
+2025-04-11 13-24-28	INFO	service/user.go:41	User successfully created	{"userID": "05830637-0a54-48d8-b0df-9d372ff9de85", "email": "user2@example.com"}
+2025-04-11 13-24-28	INFO	handler/user.go:51	User registered successfully	{"userID": "05830637-0a54-48d8-b0df-9d372ff9de85", "email": "user2@example.com"}
+2025-04-11 13-24-28	INFO	service/user.go:82	User authentication successful	{"userID": "9d8e96fe-70ac-45ac-8a85-806210de454c", "email": "user@example.com"}
+2025-04-11 13-24-28	INFO	handler/user.go:72	Login successful	{"email": "user@example.com"}
+2025-04-11 13-24-28	INFO	service/user.go:82	User authentication successful	{"userID": "05830637-0a54-48d8-b0df-9d372ff9de85", "email": "user2@example.com"}
+2025-04-11 13-24-28	INFO	handler/user.go:72	Login successful	{"email": "user2@example.com"}
+2025-04-11 13-24-28	INFO	jwt/jwt.go:46	Token verified	{"userId": "05830637-0a54-48d8-b0df-9d372ff9de85", "role": "moderator"}
+2025-04-11 13-24-28	INFO	handler/pvz.go:21	Creating new PVZ	{"request": {"City":"Москва"}}
+2025-04-11 13-24-28	INFO	service/pvz.go:21	Calling repository to create PVZ	{"city": "Москва"}
+2025-04-11 13-24-28	INFO	repository/pvz.go:29	Inserting new PVZ into database	{"city": "Москва"}
+2025-04-11 13-24-28	INFO	repository/pvz.go:41	Successfully inserted PVZ	{"pvz": {"Id":"66ed3b7d-580c-42c7-8094-a220b27a884e","RegistrationDate":"2025-04-11T10:24:28.227687Z","City":"Москва"}}
+2025-04-11 13-24-28	INFO	service/pvz.go:29	Service successfully created PVZ	{"pvz": {"Id":"66ed3b7d-580c-42c7-8094-a220b27a884e","RegistrationDate":"2025-04-11T10:24:28.227687Z","City":"Москва"}}
+2025-04-11 13-24-28	INFO	handler/pvz.go:34	Successfully created PVZ	{"pvz": {"Id":"66ed3b7d-580c-42c7-8094-a220b27a884e","RegistrationDate":"2025-04-11 10:24:28","City":"Москва"}}
+2025-04-11 13-24-28	WARN	jwt/jwt.go:41	Access forbidden	{"requiredRole": "moderator", "claims": {"exp":1744453468,"iat":1744367068,"UserId":"9d8e96fe-70ac-45ac-8a85-806210de454c","Role":"employee"}}
+2025-04-11 13-24-28	INFO	jwt/jwt.go:46	Token verified	{"userId": "9d8e96fe-70ac-45ac-8a85-806210de454c", "role": "employee"}
+2025-04-11 13-24-28	INFO	service/reception.go:22	Checking for existing in-progress reception	{"pvzId": "66ed3b7d-580c-42c7-8094-a220b27a884e"}
+2025-04-11 13-24-28	WARN	repository/reception.go:60	No in-progress reception found	{"pvzId": "66ed3b7d-580c-42c7-8094-a220b27a884e"}
+2025-04-11 13-24-28	INFO	service/reception.go:33	Calling repo to create reception	{"pvzId": "66ed3b7d-580c-42c7-8094-a220b27a884e"}
+2025-04-11 13-24-28	INFO	repository/reception.go:29	Creating new reception	{"pvzId": "66ed3b7d-580c-42c7-8094-a220b27a884e"}
+2025-04-11 13-24-28	INFO	repository/reception.go:43	Successfully created reception	{"receptionId": "83adf606-e886-4427-ae4d-87c837648883"}
+2025-04-11 13-24-28	INFO	service/reception.go:41	Successfully created reception	{"receptionId": "83adf606-e886-4427-ae4d-87c837648883"}
+2025-04-11 13-24-28	INFO	handler/reception.go:31	Reception created successfully	{"receptionId": "83adf606-e886-4427-ae4d-87c837648883", "pvzId": "66ed3b7d-580c-42c7-8094-a220b27a884e"}
+2025-04-11 13-24-28	WARN	jwt/jwt.go:41	Access forbidden	{"requiredRole": "employee", "claims": {"exp":1744453468,"iat":1744367068,"UserId":"05830637-0a54-48d8-b0df-9d372ff9de85","Role":"moderator"}}
+2025-04-11 13-24-28	INFO	jwt/jwt.go:46	Token verified	{"userId": "9d8e96fe-70ac-45ac-8a85-806210de454c", "role": "employee"}
+2025-04-11 13-24-28	INFO	service/product.go:26	Adding product	{"pvzId": "66ed3b7d-580c-42c7-8094-a220b27a884e", "type": "электроника"}
+2025-04-11 13-24-28	INFO	repository/reception.go:67	Found in-progress reception	{"pvzId": "66ed3b7d-580c-42c7-8094-a220b27a884e", "receptionId": "83adf606-e886-4427-ae4d-87c837648883"}
+2025-04-11 13-24-28	INFO	repository/product.go:42	Successfully created product	{"product": {"Id":"2fdfab50-9cb5-439f-af18-56db8aed882c","DateTime":"2025-04-11T10:24:28.355939Z","Type":"электроника","ReceptionId":"83adf606-e886-4427-ae4d-87c837648883"}}
+2025-04-11 13-24-28	INFO	service/product.go:45	Product created successfully	{"productId": "2fdfab50-9cb5-439f-af18-56db8aed882c", "receptionId": "83adf606-e886-4427-ae4d-87c837648883"}
+2025-04-11 13-24-28	INFO	jwt/jwt.go:46	Token verified	{"userId": "9d8e96fe-70ac-45ac-8a85-806210de454c", "role": "employee"}
+2025-04-11 13-24-28	INFO	service/product.go:26	Adding product	{"pvzId": "66ed3b7d-580c-42c7-8094-a220b27a884e", "type": "одежда"}
+2025-04-11 13-24-28	INFO	repository/reception.go:67	Found in-progress reception	{"pvzId": "66ed3b7d-580c-42c7-8094-a220b27a884e", "receptionId": "83adf606-e886-4427-ae4d-87c837648883"}
+2025-04-11 13-24-28	INFO	repository/product.go:42	Successfully created product	{"product": {"Id":"b9725191-4f9c-4591-9492-aa1f03063d45","DateTime":"2025-04-11T10:24:28.387613Z","Type":"одежда","ReceptionId":"83adf606-e886-4427-ae4d-87c837648883"}}
+2025-04-11 13-24-28	INFO	service/product.go:45	Product created successfully	{"productId": "b9725191-4f9c-4591-9492-aa1f03063d45", "receptionId": "83adf606-e886-4427-ae4d-87c837648883"}
+2025-04-11 13-24-28	WARN	jwt/jwt.go:41	Access forbidden	{"requiredRole": "employee", "claims": {"exp":1744453468,"iat":1744367068,"UserId":"05830637-0a54-48d8-b0df-9d372ff9de85","Role":"moderator"}}
+2025-04-11 13-25-24	INFO	service/user.go:103	Dummy token created	{"role": "employee"}
+2025-04-11 13-25-24	INFO	handler/user.go:28	Dummy login successful	{"role": "employee"}
+2025-04-11 13-25-24	INFO	repository/user.go:36	User created in database	{"userID": "d9a5ef4c-9dc5-48fe-b59f-80a3383188f3", "email": "user@example.com"}
+2025-04-11 13-25-24	INFO	service/user.go:41	User successfully created	{"userID": "d9a5ef4c-9dc5-48fe-b59f-80a3383188f3", "email": "user@example.com"}
+2025-04-11 13-25-24	INFO	handler/user.go:51	User registered successfully	{"userID": "d9a5ef4c-9dc5-48fe-b59f-80a3383188f3", "email": "user@example.com"}
+2025-04-11 13-25-24	INFO	repository/user.go:36	User created in database	{"userID": "e7b0829e-6885-4cd0-9911-94d166d06103", "email": "user2@example.com"}
+2025-04-11 13-25-24	INFO	service/user.go:41	User successfully created	{"userID": "e7b0829e-6885-4cd0-9911-94d166d06103", "email": "user2@example.com"}
+2025-04-11 13-25-24	INFO	handler/user.go:51	User registered successfully	{"userID": "e7b0829e-6885-4cd0-9911-94d166d06103", "email": "user2@example.com"}
+2025-04-11 13-25-25	INFO	service/user.go:82	User authentication successful	{"userID": "d9a5ef4c-9dc5-48fe-b59f-80a3383188f3", "email": "user@example.com"}
+2025-04-11 13-25-25	INFO	handler/user.go:72	Login successful	{"email": "user@example.com"}
+2025-04-11 13-25-25	INFO	service/user.go:82	User authentication successful	{"userID": "e7b0829e-6885-4cd0-9911-94d166d06103", "email": "user2@example.com"}
+2025-04-11 13-25-25	INFO	handler/user.go:72	Login successful	{"email": "user2@example.com"}
+2025-04-11 13-25-25	INFO	jwt/jwt.go:46	Token verified	{"userId": "e7b0829e-6885-4cd0-9911-94d166d06103", "role": "moderator"}
+2025-04-11 13-25-25	INFO	handler/pvz.go:21	Creating new PVZ	{"request": {"City":"Москва"}}
+2025-04-11 13-25-25	INFO	service/pvz.go:21	Calling repository to create PVZ	{"city": "Москва"}
+2025-04-11 13-25-25	INFO	repository/pvz.go:29	Inserting new PVZ into database	{"city": "Москва"}
+2025-04-11 13-25-25	INFO	repository/pvz.go:41	Successfully inserted PVZ	{"pvz": {"Id":"5acdc219-12fd-4ba0-b7d7-78846f994bc3","RegistrationDate":"2025-04-11T10:25:25.132733Z","City":"Москва"}}
+2025-04-11 13-25-25	INFO	service/pvz.go:29	Service successfully created PVZ	{"pvz": {"Id":"5acdc219-12fd-4ba0-b7d7-78846f994bc3","RegistrationDate":"2025-04-11T10:25:25.132733Z","City":"Москва"}}
+2025-04-11 13-25-25	INFO	handler/pvz.go:34	Successfully created PVZ	{"pvz": {"Id":"5acdc219-12fd-4ba0-b7d7-78846f994bc3","RegistrationDate":"2025-04-11 10:25:25","City":"Москва"}}
+2025-04-11 13-25-25	WARN	jwt/jwt.go:41	Access forbidden	{"requiredRole": "moderator", "claims": {"exp":1744453525,"iat":1744367125,"UserId":"d9a5ef4c-9dc5-48fe-b59f-80a3383188f3","Role":"employee"}}
+2025-04-11 13-25-25	INFO	jwt/jwt.go:46	Token verified	{"userId": "d9a5ef4c-9dc5-48fe-b59f-80a3383188f3", "role": "employee"}
+2025-04-11 13-25-25	INFO	service/reception.go:22	Checking for existing in-progress reception	{"pvzId": "5acdc219-12fd-4ba0-b7d7-78846f994bc3"}
+2025-04-11 13-25-25	WARN	repository/reception.go:60	No in-progress reception found	{"pvzId": "5acdc219-12fd-4ba0-b7d7-78846f994bc3"}
+2025-04-11 13-25-25	INFO	service/reception.go:33	Calling repo to create reception	{"pvzId": "5acdc219-12fd-4ba0-b7d7-78846f994bc3"}
+2025-04-11 13-25-25	INFO	repository/reception.go:29	Creating new reception	{"pvzId": "5acdc219-12fd-4ba0-b7d7-78846f994bc3"}
+2025-04-11 13-25-25	INFO	repository/reception.go:43	Successfully created reception	{"receptionId": "380072aa-cdd6-498e-945f-716617673e5d"}
+2025-04-11 13-25-25	INFO	service/reception.go:41	Successfully created reception	{"receptionId": "380072aa-cdd6-498e-945f-716617673e5d"}
+2025-04-11 13-25-25	INFO	handler/reception.go:31	Reception created successfully	{"receptionId": "380072aa-cdd6-498e-945f-716617673e5d", "pvzId": "5acdc219-12fd-4ba0-b7d7-78846f994bc3"}
+2025-04-11 13-25-25	WARN	jwt/jwt.go:41	Access forbidden	{"requiredRole": "employee", "claims": {"exp":1744453525,"iat":1744367125,"UserId":"e7b0829e-6885-4cd0-9911-94d166d06103","Role":"moderator"}}
+2025-04-11 13-25-25	INFO	jwt/jwt.go:46	Token verified	{"userId": "d9a5ef4c-9dc5-48fe-b59f-80a3383188f3", "role": "employee"}
+2025-04-11 13-25-25	INFO	service/product.go:26	Adding product	{"pvzId": "5acdc219-12fd-4ba0-b7d7-78846f994bc3", "type": "электроника"}
+2025-04-11 13-25-25	INFO	repository/reception.go:67	Found in-progress reception	{"pvzId": "5acdc219-12fd-4ba0-b7d7-78846f994bc3", "receptionId": "380072aa-cdd6-498e-945f-716617673e5d"}
+2025-04-11 13-25-25	INFO	repository/product.go:42	Successfully created product	{"product": {"Id":"c5a2dd71-c48f-404b-b1f6-2a61209c68fc","DateTime":"2025-04-11T10:25:25.199663Z","Type":"электроника","ReceptionId":"380072aa-cdd6-498e-945f-716617673e5d"}}
+2025-04-11 13-25-25	INFO	service/product.go:45	Product created successfully	{"productId": "c5a2dd71-c48f-404b-b1f6-2a61209c68fc", "receptionId": "380072aa-cdd6-498e-945f-716617673e5d"}
+2025-04-11 13-25-25	INFO	jwt/jwt.go:46	Token verified	{"userId": "d9a5ef4c-9dc5-48fe-b59f-80a3383188f3", "role": "employee"}
+2025-04-11 13-25-25	INFO	service/product.go:26	Adding product	{"pvzId": "5acdc219-12fd-4ba0-b7d7-78846f994bc3", "type": "одежда"}
+2025-04-11 13-25-25	INFO	repository/reception.go:67	Found in-progress reception	{"pvzId": "5acdc219-12fd-4ba0-b7d7-78846f994bc3", "receptionId": "380072aa-cdd6-498e-945f-716617673e5d"}
+2025-04-11 13-25-25	INFO	repository/product.go:42	Successfully created product	{"product": {"Id":"b3fb61cd-6927-4903-a446-272d5d9516cd","DateTime":"2025-04-11T10:25:25.229419Z","Type":"одежда","ReceptionId":"380072aa-cdd6-498e-945f-716617673e5d"}}
+2025-04-11 13-25-25	INFO	service/product.go:45	Product created successfully	{"productId": "b3fb61cd-6927-4903-a446-272d5d9516cd", "receptionId": "380072aa-cdd6-498e-945f-716617673e5d"}
+2025-04-11 13-25-25	WARN	jwt/jwt.go:41	Access forbidden	{"requiredRole": "employee", "claims": {"exp":1744453525,"iat":1744367125,"UserId":"e7b0829e-6885-4cd0-9911-94d166d06103","Role":"moderator"}}
+2025-04-11 13-27-30	INFO	service/user.go:103	Dummy token created	{"role": "employee"}
+2025-04-11 13-27-30	INFO	handler/user.go:28	Dummy login successful	{"role": "employee"}
+2025-04-11 13-27-30	INFO	repository/user.go:36	User created in database	{"userID": "12901695-0567-4377-a129-82b15dc7ccee", "email": "user@example.com"}
+2025-04-11 13-27-30	INFO	service/user.go:41	User successfully created	{"userID": "12901695-0567-4377-a129-82b15dc7ccee", "email": "user@example.com"}
+2025-04-11 13-27-30	INFO	handler/user.go:51	User registered successfully	{"userID": "12901695-0567-4377-a129-82b15dc7ccee", "email": "user@example.com"}
+2025-04-11 13-27-30	INFO	repository/user.go:36	User created in database	{"userID": "15fa1fda-5905-40dc-8340-712c54cae651", "email": "user2@example.com"}
+2025-04-11 13-27-30	INFO	service/user.go:41	User successfully created	{"userID": "15fa1fda-5905-40dc-8340-712c54cae651", "email": "user2@example.com"}
+2025-04-11 13-27-30	INFO	handler/user.go:51	User registered successfully	{"userID": "15fa1fda-5905-40dc-8340-712c54cae651", "email": "user2@example.com"}
+2025-04-11 13-27-30	INFO	service/user.go:82	User authentication successful	{"userID": "12901695-0567-4377-a129-82b15dc7ccee", "email": "user@example.com"}
+2025-04-11 13-27-30	INFO	handler/user.go:72	Login successful	{"email": "user@example.com"}
+2025-04-11 13-27-30	INFO	service/user.go:82	User authentication successful	{"userID": "15fa1fda-5905-40dc-8340-712c54cae651", "email": "user2@example.com"}
+2025-04-11 13-27-30	INFO	handler/user.go:72	Login successful	{"email": "user2@example.com"}
+2025-04-11 13-27-30	INFO	jwt/jwt.go:46	Token verified	{"userId": "15fa1fda-5905-40dc-8340-712c54cae651", "role": "moderator"}
+2025-04-11 13-27-30	INFO	handler/pvz.go:21	Creating new PVZ	{"request": {"City":"Москва"}}
+2025-04-11 13-27-30	INFO	service/pvz.go:21	Calling repository to create PVZ	{"city": "Москва"}
+2025-04-11 13-27-30	INFO	repository/pvz.go:29	Inserting new PVZ into database	{"city": "Москва"}
+2025-04-11 13-27-30	INFO	repository/pvz.go:41	Successfully inserted PVZ	{"pvz": {"Id":"2202cd1b-1b64-4cf0-be2b-d57dc9f5d35b","RegistrationDate":"2025-04-11T10:27:30.987632Z","City":"Москва"}}
+2025-04-11 13-27-30	INFO	service/pvz.go:29	Service successfully created PVZ	{"pvz": {"Id":"2202cd1b-1b64-4cf0-be2b-d57dc9f5d35b","RegistrationDate":"2025-04-11T10:27:30.987632Z","City":"Москва"}}
+2025-04-11 13-27-30	INFO	handler/pvz.go:34	Successfully created PVZ	{"pvz": {"Id":"2202cd1b-1b64-4cf0-be2b-d57dc9f5d35b","RegistrationDate":"2025-04-11 10:27:30","City":"Москва"}}
+2025-04-11 13-27-31	WARN	jwt/jwt.go:41	Access forbidden	{"requiredRole": "moderator", "claims": {"exp":1744453650,"iat":1744367250,"UserId":"12901695-0567-4377-a129-82b15dc7ccee","Role":"employee"}}
+2025-04-11 13-27-31	INFO	jwt/jwt.go:46	Token verified	{"userId": "12901695-0567-4377-a129-82b15dc7ccee", "role": "employee"}
+2025-04-11 13-27-31	INFO	service/reception.go:22	Checking for existing in-progress reception	{"pvzId": "2202cd1b-1b64-4cf0-be2b-d57dc9f5d35b"}
+2025-04-11 13-27-31	WARN	repository/reception.go:60	No in-progress reception found	{"pvzId": "2202cd1b-1b64-4cf0-be2b-d57dc9f5d35b"}
+2025-04-11 13-27-31	INFO	service/reception.go:33	Calling repo to create reception	{"pvzId": "2202cd1b-1b64-4cf0-be2b-d57dc9f5d35b"}
+2025-04-11 13-27-31	INFO	repository/reception.go:29	Creating new reception	{"pvzId": "2202cd1b-1b64-4cf0-be2b-d57dc9f5d35b"}
+2025-04-11 13-27-31	INFO	repository/reception.go:43	Successfully created reception	{"receptionId": "9d1098f9-2c21-417c-826f-55b26f3e9cf2"}
+2025-04-11 13-27-31	INFO	service/reception.go:41	Successfully created reception	{"receptionId": "9d1098f9-2c21-417c-826f-55b26f3e9cf2"}
+2025-04-11 13-27-31	INFO	handler/reception.go:31	Reception created successfully	{"receptionId": "9d1098f9-2c21-417c-826f-55b26f3e9cf2", "pvzId": "2202cd1b-1b64-4cf0-be2b-d57dc9f5d35b"}
+2025-04-11 13-27-31	WARN	jwt/jwt.go:41	Access forbidden	{"requiredRole": "employee", "claims": {"exp":1744453650,"iat":1744367250,"UserId":"15fa1fda-5905-40dc-8340-712c54cae651","Role":"moderator"}}
+2025-04-11 13-27-31	INFO	jwt/jwt.go:46	Token verified	{"userId": "12901695-0567-4377-a129-82b15dc7ccee", "role": "employee"}
+2025-04-11 13-27-31	INFO	service/product.go:26	Adding product	{"pvzId": "2202cd1b-1b64-4cf0-be2b-d57dc9f5d35b", "type": "электроника"}
+2025-04-11 13-27-31	INFO	repository/reception.go:67	Found in-progress reception	{"pvzId": "2202cd1b-1b64-4cf0-be2b-d57dc9f5d35b", "receptionId": "9d1098f9-2c21-417c-826f-55b26f3e9cf2"}
+2025-04-11 13-27-31	INFO	repository/product.go:42	Successfully created product	{"product": {"Id":"b4dc4267-e27d-46b1-9533-080600206ee6","DateTime":"2025-04-11T10:27:31.05348Z","Type":"электроника","ReceptionId":"9d1098f9-2c21-417c-826f-55b26f3e9cf2"}}
+2025-04-11 13-27-31	INFO	service/product.go:45	Product created successfully	{"productId": "b4dc4267-e27d-46b1-9533-080600206ee6", "receptionId": "9d1098f9-2c21-417c-826f-55b26f3e9cf2"}
+2025-04-11 13-27-31	INFO	jwt/jwt.go:46	Token verified	{"userId": "12901695-0567-4377-a129-82b15dc7ccee", "role": "employee"}
+2025-04-11 13-27-31	INFO	service/product.go:26	Adding product	{"pvzId": "2202cd1b-1b64-4cf0-be2b-d57dc9f5d35b", "type": "одежда"}
+2025-04-11 13-27-31	INFO	repository/reception.go:67	Found in-progress reception	{"pvzId": "2202cd1b-1b64-4cf0-be2b-d57dc9f5d35b", "receptionId": "9d1098f9-2c21-417c-826f-55b26f3e9cf2"}
+2025-04-11 13-27-31	INFO	repository/product.go:42	Successfully created product	{"product": {"Id":"46734116-5b0f-4df7-8957-29afc57a54a7","DateTime":"2025-04-11T10:27:31.070929Z","Type":"одежда","ReceptionId":"9d1098f9-2c21-417c-826f-55b26f3e9cf2"}}
+2025-04-11 13-27-31	INFO	service/product.go:45	Product created successfully	{"productId": "46734116-5b0f-4df7-8957-29afc57a54a7", "receptionId": "9d1098f9-2c21-417c-826f-55b26f3e9cf2"}
+2025-04-11 13-27-31	WARN	jwt/jwt.go:41	Access forbidden	{"requiredRole": "employee", "claims": {"exp":1744453650,"iat":1744367250,"UserId":"15fa1fda-5905-40dc-8340-712c54cae651","Role":"moderator"}}
+2025-04-11 13-27-31	INFO	jwt/jwt.go:46	Token verified	{"userId": "12901695-0567-4377-a129-82b15dc7ccee", "role": "employee"}
+2025-04-11 13-27-31	INFO	handler/product.go:53	Attempting to delete last product	{"PvzId": "2202cd1b-1b64-4cf0-be2b-d57dc9f5d35b"}
+2025-04-11 13-27-31	INFO	service/product.go:50	Attempting to delete last product	{"pvzId": "2202cd1b-1b64-4cf0-be2b-d57dc9f5d35b"}
+2025-04-11 13-27-31	INFO	repository/reception.go:67	Found in-progress reception	{"pvzId": "2202cd1b-1b64-4cf0-be2b-d57dc9f5d35b", "receptionId": "9d1098f9-2c21-417c-826f-55b26f3e9cf2"}
+2025-04-11 13-27-31	ERROR	repository/product.go:62	Failed to fetch last product ID	{"receptionId": "9d1098f9-2c21-417c-826f-55b26f3e9cf2", "error": "ERROR: column \"reception_id\" does not exist (SQLSTATE 42703)"}
+2025-04-11 13-27-31	ERROR	service/product.go:64	Failed to get last product ID	{"receptionId": "9d1098f9-2c21-417c-826f-55b26f3e9cf2", "error": "failed to get last product id: ERROR: column \"reception_id\" does not exist (SQLSTATE 42703)"}
+2025-04-11 13-27-31	ERROR	handler/product.go:57	Failed to delete last product	{"PvzId": "2202cd1b-1b64-4cf0-be2b-d57dc9f5d35b", "error": "cannot delete product: failed to get last product: failed to get last product id: ERROR: column \"reception_id\" does not exist (SQLSTATE 42703)"}
+2025-04-11 13-27-31	WARN	jwt/jwt.go:41	Access forbidden	{"requiredRole": "employee", "claims": {"exp":1744453650,"iat":1744367250,"UserId":"15fa1fda-5905-40dc-8340-712c54cae651","Role":"moderator"}}
+2025-04-11 13-28-42	INFO	cmd/main.go:27	The application is running
+2025-04-11 13-28-42	INFO	db/db.go:38	Successfully connected to the database!
+2025-04-11 13-28-47	INFO	cmd/main.go:27	The application is running
+2025-04-11 13-28-47	INFO	db/db.go:38	Successfully connected to the database!
+2025-04-11 13-28-47	FATAL	cmd/main.go:55	Error occurred while running server	{"error": "listen tcp :8080: bind: address already in use"}
+2025-04-11 13-30-06	INFO	service/user.go:103	Dummy token created	{"role": "employee"}
+2025-04-11 13-30-06	INFO	handler/user.go:28	Dummy login successful	{"role": "employee"}
+2025-04-11 13-30-06	INFO	repository/user.go:36	User created in database	{"userID": "bfa29ce4-24c3-4cff-a14a-1332ea7ba10b", "email": "user@example.com"}
+2025-04-11 13-30-06	INFO	service/user.go:41	User successfully created	{"userID": "bfa29ce4-24c3-4cff-a14a-1332ea7ba10b", "email": "user@example.com"}
+2025-04-11 13-30-06	INFO	handler/user.go:51	User registered successfully	{"userID": "bfa29ce4-24c3-4cff-a14a-1332ea7ba10b", "email": "user@example.com"}
+2025-04-11 13-30-06	INFO	repository/user.go:36	User created in database	{"userID": "cc1969d3-3d3e-45f8-a066-efa26efb436d", "email": "user2@example.com"}
+2025-04-11 13-30-06	INFO	service/user.go:41	User successfully created	{"userID": "cc1969d3-3d3e-45f8-a066-efa26efb436d", "email": "user2@example.com"}
+2025-04-11 13-30-06	INFO	handler/user.go:51	User registered successfully	{"userID": "cc1969d3-3d3e-45f8-a066-efa26efb436d", "email": "user2@example.com"}
+2025-04-11 13-30-06	INFO	service/user.go:82	User authentication successful	{"userID": "bfa29ce4-24c3-4cff-a14a-1332ea7ba10b", "email": "user@example.com"}
+2025-04-11 13-30-06	INFO	handler/user.go:72	Login successful	{"email": "user@example.com"}
+2025-04-11 13-30-06	INFO	service/user.go:82	User authentication successful	{"userID": "cc1969d3-3d3e-45f8-a066-efa26efb436d", "email": "user2@example.com"}
+2025-04-11 13-30-06	INFO	handler/user.go:72	Login successful	{"email": "user2@example.com"}
+2025-04-11 13-30-06	INFO	jwt/jwt.go:46	Token verified	{"userId": "cc1969d3-3d3e-45f8-a066-efa26efb436d", "role": "moderator"}
+2025-04-11 13-30-06	INFO	handler/pvz.go:21	Creating new PVZ	{"request": {"City":"Москва"}}
+2025-04-11 13-30-06	INFO	service/pvz.go:21	Calling repository to create PVZ	{"city": "Москва"}
+2025-04-11 13-30-06	INFO	repository/pvz.go:29	Inserting new PVZ into database	{"city": "Москва"}
+2025-04-11 13-30-06	INFO	repository/pvz.go:41	Successfully inserted PVZ	{"pvz": {"Id":"ed1f8e06-7f01-4a28-a933-c50988f1ab9d","RegistrationDate":"2025-04-11T10:30:06.423075Z","City":"Москва"}}
+2025-04-11 13-30-06	INFO	service/pvz.go:29	Service successfully created PVZ	{"pvz": {"Id":"ed1f8e06-7f01-4a28-a933-c50988f1ab9d","RegistrationDate":"2025-04-11T10:30:06.423075Z","City":"Москва"}}
+2025-04-11 13-30-06	INFO	handler/pvz.go:34	Successfully created PVZ	{"pvz": {"Id":"ed1f8e06-7f01-4a28-a933-c50988f1ab9d","RegistrationDate":"2025-04-11 10:30:06","City":"Москва"}}
+2025-04-11 13-30-06	WARN	jwt/jwt.go:41	Access forbidden	{"requiredRole": "moderator", "claims": {"exp":1744453806,"iat":1744367406,"UserId":"bfa29ce4-24c3-4cff-a14a-1332ea7ba10b","Role":"employee"}}
+2025-04-11 13-30-06	INFO	jwt/jwt.go:46	Token verified	{"userId": "bfa29ce4-24c3-4cff-a14a-1332ea7ba10b", "role": "employee"}
+2025-04-11 13-30-06	INFO	service/reception.go:22	Checking for existing in-progress reception	{"pvzId": "ed1f8e06-7f01-4a28-a933-c50988f1ab9d"}
+2025-04-11 13-30-06	WARN	repository/reception.go:60	No in-progress reception found	{"pvzId": "ed1f8e06-7f01-4a28-a933-c50988f1ab9d"}
+2025-04-11 13-30-06	INFO	service/reception.go:33	Calling repo to create reception	{"pvzId": "ed1f8e06-7f01-4a28-a933-c50988f1ab9d"}
+2025-04-11 13-30-06	INFO	repository/reception.go:29	Creating new reception	{"pvzId": "ed1f8e06-7f01-4a28-a933-c50988f1ab9d"}
+2025-04-11 13-30-06	INFO	repository/reception.go:43	Successfully created reception	{"receptionId": "492935e8-8d16-467b-8154-d70a99ee7675"}
+2025-04-11 13-30-06	INFO	service/reception.go:41	Successfully created reception	{"receptionId": "492935e8-8d16-467b-8154-d70a99ee7675"}
+2025-04-11 13-30-06	INFO	handler/reception.go:31	Reception created successfully	{"receptionId": "492935e8-8d16-467b-8154-d70a99ee7675", "pvzId": "ed1f8e06-7f01-4a28-a933-c50988f1ab9d"}
+2025-04-11 13-30-06	WARN	jwt/jwt.go:41	Access forbidden	{"requiredRole": "employee", "claims": {"exp":1744453806,"iat":1744367406,"UserId":"cc1969d3-3d3e-45f8-a066-efa26efb436d","Role":"moderator"}}
+2025-04-11 13-30-06	INFO	jwt/jwt.go:46	Token verified	{"userId": "bfa29ce4-24c3-4cff-a14a-1332ea7ba10b", "role": "employee"}
+2025-04-11 13-30-06	INFO	service/product.go:26	Adding product	{"pvzId": "ed1f8e06-7f01-4a28-a933-c50988f1ab9d", "type": "электроника"}
+2025-04-11 13-30-06	INFO	repository/reception.go:67	Found in-progress reception	{"pvzId": "ed1f8e06-7f01-4a28-a933-c50988f1ab9d", "receptionId": "492935e8-8d16-467b-8154-d70a99ee7675"}
+2025-04-11 13-30-06	INFO	repository/product.go:42	Successfully created product	{"product": {"Id":"5f03b59c-95bd-43bd-a420-816039ed06ad","DateTime":"2025-04-11T10:30:06.487837Z","Type":"электроника","ReceptionId":"492935e8-8d16-467b-8154-d70a99ee7675"}}
+2025-04-11 13-30-06	INFO	service/product.go:45	Product created successfully	{"productId": "5f03b59c-95bd-43bd-a420-816039ed06ad", "receptionId": "492935e8-8d16-467b-8154-d70a99ee7675"}
+2025-04-11 13-30-06	INFO	jwt/jwt.go:46	Token verified	{"userId": "bfa29ce4-24c3-4cff-a14a-1332ea7ba10b", "role": "employee"}
+2025-04-11 13-30-06	INFO	service/product.go:26	Adding product	{"pvzId": "ed1f8e06-7f01-4a28-a933-c50988f1ab9d", "type": "одежда"}
+2025-04-11 13-30-06	INFO	repository/reception.go:67	Found in-progress reception	{"pvzId": "ed1f8e06-7f01-4a28-a933-c50988f1ab9d", "receptionId": "492935e8-8d16-467b-8154-d70a99ee7675"}
+2025-04-11 13-30-06	INFO	repository/product.go:42	Successfully created product	{"product": {"Id":"effc20a1-8a3f-4cea-a33e-bb9fad145565","DateTime":"2025-04-11T10:30:06.506619Z","Type":"одежда","ReceptionId":"492935e8-8d16-467b-8154-d70a99ee7675"}}
+2025-04-11 13-30-06	INFO	service/product.go:45	Product created successfully	{"productId": "effc20a1-8a3f-4cea-a33e-bb9fad145565", "receptionId": "492935e8-8d16-467b-8154-d70a99ee7675"}
+2025-04-11 13-30-06	WARN	jwt/jwt.go:41	Access forbidden	{"requiredRole": "employee", "claims": {"exp":1744453806,"iat":1744367406,"UserId":"cc1969d3-3d3e-45f8-a066-efa26efb436d","Role":"moderator"}}
+2025-04-11 13-30-06	INFO	jwt/jwt.go:46	Token verified	{"userId": "bfa29ce4-24c3-4cff-a14a-1332ea7ba10b", "role": "employee"}
+2025-04-11 13-30-06	INFO	handler/product.go:53	Attempting to delete last product	{"PvzId": "ed1f8e06-7f01-4a28-a933-c50988f1ab9d"}
+2025-04-11 13-30-06	INFO	service/product.go:50	Attempting to delete last product	{"pvzId": "ed1f8e06-7f01-4a28-a933-c50988f1ab9d"}
+2025-04-11 13-30-06	INFO	repository/reception.go:67	Found in-progress reception	{"pvzId": "ed1f8e06-7f01-4a28-a933-c50988f1ab9d", "receptionId": "492935e8-8d16-467b-8154-d70a99ee7675"}
+2025-04-11 13-30-06	INFO	repository/product.go:66	Fetched last product ID	{"productId": "effc20a1-8a3f-4cea-a33e-bb9fad145565", "receptionId": "492935e8-8d16-467b-8154-d70a99ee7675"}
+2025-04-11 13-30-06	INFO	repository/product.go:79	Product deleted successfully	{"productId": "effc20a1-8a3f-4cea-a33e-bb9fad145565"}
+2025-04-11 13-30-06	INFO	service/product.go:78	Product deleted successfully	{"productId": "effc20a1-8a3f-4cea-a33e-bb9fad145565", "receptionId": "492935e8-8d16-467b-8154-d70a99ee7675"}
+2025-04-11 13-30-06	INFO	handler/product.go:62	Last product deleted successfully	{"PvzId": "ed1f8e06-7f01-4a28-a933-c50988f1ab9d"}
+2025-04-11 13-30-06	WARN	jwt/jwt.go:41	Access forbidden	{"requiredRole": "employee", "claims": {"exp":1744453806,"iat":1744367406,"UserId":"cc1969d3-3d3e-45f8-a066-efa26efb436d","Role":"moderator"}}
+2025-04-11 13-46-50	INFO	cmd/main.go:27	The application is running
+2025-04-11 13-46-50	INFO	db/db.go:38	Successfully connected to the database!
+2025-04-11 13-46-58	INFO	service/user.go:103	Dummy token created	{"role": "employee"}
+2025-04-11 13-46-58	INFO	handler/user.go:28	Dummy login successful	{"role": "employee"}
+2025-04-11 13-46-58	INFO	repository/user.go:36	User created in database	{"userID": "4bc37502-f970-4d27-a3bd-3a84a7b71927", "email": "user@example.com"}
+2025-04-11 13-46-58	INFO	service/user.go:41	User successfully created	{"userID": "4bc37502-f970-4d27-a3bd-3a84a7b71927", "email": "user@example.com"}
+2025-04-11 13-46-58	INFO	handler/user.go:51	User registered successfully	{"userID": "4bc37502-f970-4d27-a3bd-3a84a7b71927", "email": "user@example.com"}
+2025-04-11 13-46-58	INFO	repository/user.go:36	User created in database	{"userID": "26d311bf-1472-462a-98e8-bb04fb1148e9", "email": "user2@example.com"}
+2025-04-11 13-46-58	INFO	service/user.go:41	User successfully created	{"userID": "26d311bf-1472-462a-98e8-bb04fb1148e9", "email": "user2@example.com"}
+2025-04-11 13-46-58	INFO	handler/user.go:51	User registered successfully	{"userID": "26d311bf-1472-462a-98e8-bb04fb1148e9", "email": "user2@example.com"}
+2025-04-11 13-46-58	INFO	service/user.go:82	User authentication successful	{"userID": "4bc37502-f970-4d27-a3bd-3a84a7b71927", "email": "user@example.com"}
+2025-04-11 13-46-58	INFO	handler/user.go:72	Login successful	{"email": "user@example.com"}
+2025-04-11 13-46-58	INFO	service/user.go:82	User authentication successful	{"userID": "26d311bf-1472-462a-98e8-bb04fb1148e9", "email": "user2@example.com"}
+2025-04-11 13-46-58	INFO	handler/user.go:72	Login successful	{"email": "user2@example.com"}
+2025-04-11 13-46-58	INFO	jwt/jwt.go:46	Token verified	{"userId": "26d311bf-1472-462a-98e8-bb04fb1148e9", "role": "moderator"}
+2025-04-11 13-46-58	INFO	handler/pvz.go:21	Creating new PVZ	{"request": {"City":"Москва"}}
+2025-04-11 13-46-58	INFO	service/pvz.go:21	Calling repository to create PVZ	{"city": "Москва"}
+2025-04-11 13-46-58	INFO	repository/pvz.go:29	Inserting new PVZ into database	{"city": "Москва"}
+2025-04-11 13-46-58	INFO	repository/pvz.go:41	Successfully inserted PVZ	{"pvz": {"Id":"e8711ede-c556-465c-bcc6-35126b003d1e","RegistrationDate":"2025-04-11T10:46:58.358254Z","City":"Москва"}}
+2025-04-11 13-46-58	INFO	service/pvz.go:29	Service successfully created PVZ	{"pvz": {"Id":"e8711ede-c556-465c-bcc6-35126b003d1e","RegistrationDate":"2025-04-11T10:46:58.358254Z","City":"Москва"}}
+2025-04-11 13-46-58	INFO	handler/pvz.go:34	Successfully created PVZ	{"pvz": {"Id":"e8711ede-c556-465c-bcc6-35126b003d1e","RegistrationDate":"2025-04-11 10:46:58","City":"Москва"}}
+2025-04-11 13-46-58	WARN	jwt/jwt.go:41	Access forbidden	{"requiredRole": "moderator", "claims": {"exp":1744454818,"iat":1744368418,"UserId":"4bc37502-f970-4d27-a3bd-3a84a7b71927","Role":"employee"}}
+2025-04-11 13-46-58	INFO	jwt/jwt.go:46	Token verified	{"userId": "4bc37502-f970-4d27-a3bd-3a84a7b71927", "role": "employee"}
+2025-04-11 13-46-58	INFO	service/reception.go:22	Checking for existing in-progress reception	{"pvzId": "e8711ede-c556-465c-bcc6-35126b003d1e"}
+2025-04-11 13-46-58	WARN	repository/reception.go:60	No in-progress reception found	{"pvzId": "e8711ede-c556-465c-bcc6-35126b003d1e"}
+2025-04-11 13-46-58	INFO	service/reception.go:33	Calling repo to create reception	{"pvzId": "e8711ede-c556-465c-bcc6-35126b003d1e"}
+2025-04-11 13-46-58	INFO	repository/reception.go:29	Creating new reception	{"pvzId": "e8711ede-c556-465c-bcc6-35126b003d1e"}
+2025-04-11 13-46-58	INFO	repository/reception.go:43	Successfully created reception	{"receptionId": "30d41d1d-6ae5-4b8d-8223-af6adbae0c84"}
+2025-04-11 13-46-58	INFO	service/reception.go:41	Successfully created reception	{"receptionId": "30d41d1d-6ae5-4b8d-8223-af6adbae0c84"}
+2025-04-11 13-46-58	INFO	handler/reception.go:33	Reception created successfully	{"receptionId": "30d41d1d-6ae5-4b8d-8223-af6adbae0c84", "pvzId": "e8711ede-c556-465c-bcc6-35126b003d1e"}
+2025-04-11 13-46-58	WARN	jwt/jwt.go:41	Access forbidden	{"requiredRole": "employee", "claims": {"exp":1744454818,"iat":1744368418,"UserId":"26d311bf-1472-462a-98e8-bb04fb1148e9","Role":"moderator"}}
+2025-04-11 13-46-58	INFO	jwt/jwt.go:46	Token verified	{"userId": "4bc37502-f970-4d27-a3bd-3a84a7b71927", "role": "employee"}
+2025-04-11 13-46-58	INFO	service/product.go:26	Adding product	{"pvzId": "e8711ede-c556-465c-bcc6-35126b003d1e", "type": "электроника"}
+2025-04-11 13-46-58	INFO	repository/reception.go:67	Found in-progress reception	{"pvzId": "e8711ede-c556-465c-bcc6-35126b003d1e", "receptionId": "30d41d1d-6ae5-4b8d-8223-af6adbae0c84"}
+2025-04-11 13-46-58	INFO	repository/product.go:42	Successfully created product	{"product": {"Id":"fe5b6db3-9dfe-4aa7-92d1-f943c3dcd3d1","DateTime":"2025-04-11T10:46:58.429696Z","Type":"электроника","ReceptionId":"30d41d1d-6ae5-4b8d-8223-af6adbae0c84"}}
+2025-04-11 13-46-58	INFO	service/product.go:45	Product created successfully	{"productId": "fe5b6db3-9dfe-4aa7-92d1-f943c3dcd3d1", "receptionId": "30d41d1d-6ae5-4b8d-8223-af6adbae0c84"}
+2025-04-11 13-46-58	INFO	jwt/jwt.go:46	Token verified	{"userId": "4bc37502-f970-4d27-a3bd-3a84a7b71927", "role": "employee"}
+2025-04-11 13-46-58	INFO	service/product.go:26	Adding product	{"pvzId": "e8711ede-c556-465c-bcc6-35126b003d1e", "type": "одежда"}
+2025-04-11 13-46-58	INFO	repository/reception.go:67	Found in-progress reception	{"pvzId": "e8711ede-c556-465c-bcc6-35126b003d1e", "receptionId": "30d41d1d-6ae5-4b8d-8223-af6adbae0c84"}
+2025-04-11 13-46-58	INFO	repository/product.go:42	Successfully created product	{"product": {"Id":"644ade1c-6b2e-496c-9101-88d4679b8f5c","DateTime":"2025-04-11T10:46:58.462191Z","Type":"одежда","ReceptionId":"30d41d1d-6ae5-4b8d-8223-af6adbae0c84"}}
+2025-04-11 13-46-58	INFO	service/product.go:45	Product created successfully	{"productId": "644ade1c-6b2e-496c-9101-88d4679b8f5c", "receptionId": "30d41d1d-6ae5-4b8d-8223-af6adbae0c84"}
+2025-04-11 13-46-58	WARN	jwt/jwt.go:41	Access forbidden	{"requiredRole": "employee", "claims": {"exp":1744454818,"iat":1744368418,"UserId":"26d311bf-1472-462a-98e8-bb04fb1148e9","Role":"moderator"}}
+2025-04-11 13-46-58	INFO	jwt/jwt.go:46	Token verified	{"userId": "4bc37502-f970-4d27-a3bd-3a84a7b71927", "role": "employee"}
+2025-04-11 13-46-58	INFO	handler/product.go:53	Attempting to delete last product	{"PvzId": "e8711ede-c556-465c-bcc6-35126b003d1e"}
+2025-04-11 13-46-58	INFO	service/product.go:50	Attempting to delete last product	{"pvzId": "e8711ede-c556-465c-bcc6-35126b003d1e"}
+2025-04-11 13-46-58	INFO	repository/reception.go:67	Found in-progress reception	{"pvzId": "e8711ede-c556-465c-bcc6-35126b003d1e", "receptionId": "30d41d1d-6ae5-4b8d-8223-af6adbae0c84"}
+2025-04-11 13-46-58	INFO	repository/product.go:66	Fetched last product ID	{"productId": "644ade1c-6b2e-496c-9101-88d4679b8f5c", "receptionId": "30d41d1d-6ae5-4b8d-8223-af6adbae0c84"}
+2025-04-11 13-46-58	INFO	repository/product.go:79	Product deleted successfully	{"productId": "644ade1c-6b2e-496c-9101-88d4679b8f5c"}
+2025-04-11 13-46-58	INFO	service/product.go:78	Product deleted successfully	{"productId": "644ade1c-6b2e-496c-9101-88d4679b8f5c", "receptionId": "30d41d1d-6ae5-4b8d-8223-af6adbae0c84"}
+2025-04-11 13-46-58	INFO	handler/product.go:62	Last product deleted successfully	{"PvzId": "e8711ede-c556-465c-bcc6-35126b003d1e"}
+2025-04-11 13-46-58	WARN	jwt/jwt.go:41	Access forbidden	{"requiredRole": "employee", "claims": {"exp":1744454818,"iat":1744368418,"UserId":"26d311bf-1472-462a-98e8-bb04fb1148e9","Role":"moderator"}}
+2025-04-11 13-46-58	INFO	jwt/jwt.go:46	Token verified	{"userId": "4bc37502-f970-4d27-a3bd-3a84a7b71927", "role": "employee"}
+2025-04-11 13-46-58	INFO	handler/reception.go:47	Attempting to close reception	{"PvzId": "e8711ede-c556-465c-bcc6-35126b003d1e"}
+2025-04-11 13-46-58	INFO	service/reception.go:46	Attempting to close reception	{"pvzId": "e8711ede-c556-465c-bcc6-35126b003d1e"}
+2025-04-11 13-46-58	INFO	repository/reception.go:67	Found in-progress reception	{"pvzId": "e8711ede-c556-465c-bcc6-35126b003d1e", "receptionId": "30d41d1d-6ae5-4b8d-8223-af6adbae0c84"}
+2025-04-11 13-46-58	INFO	service/reception.go:65	Reception closed successfully	{"pvzId": "e8711ede-c556-465c-bcc6-35126b003d1e"}
+2025-04-11 13-46-58	INFO	handler/reception.go:56	Reception closed successfully	{"PvzId": "e8711ede-c556-465c-bcc6-35126b003d1e"}

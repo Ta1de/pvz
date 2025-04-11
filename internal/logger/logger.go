@@ -41,7 +41,7 @@ func Init() error {
 		zapcore.NewCore(consoleEncoder, zapcore.AddSync(os.Stdout), zapcore.DebugLevel),
 	)
 
-	Logger = zap.New(core, zap.AddCaller(), zap.AddStacktrace(zapcore.ErrorLevel))
+	Logger = zap.New(core, zap.AddCaller())
 	SugaredLogger = Logger.Sugar()
 
 	zap.ReplaceGlobals(Logger)
