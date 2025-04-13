@@ -3,14 +3,12 @@ package mapper
 import (
 	"github.com/google/uuid"
 	"pvz/internal/api/response"
-	"pvz/internal/logger"
 	"pvz/internal/repository/model"
 )
 
 func ToReception(req response.ReceptionRequest) model.Reception {
 	pvzId, err := uuid.Parse(req.PvzId)
 	if err != nil {
-		logger.SugaredLogger.Errorw("Invalid PvzId format", "pvzId", req.PvzId, "error", err)
 		return model.Reception{}
 	}
 

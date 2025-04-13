@@ -2,8 +2,11 @@ package service
 
 import (
 	"context"
+	"time"
 
 	"github.com/google/uuid"
+	"pvz/internal/api/response"
+	"pvz/internal/logger"
 	"pvz/internal/repository"
 	"pvz/internal/repository/model"
 )
@@ -16,6 +19,7 @@ type User interface {
 
 type Pvz interface {
 	CreatePvz(ctx context.Context, pvz model.Pvz) (model.Pvz, error)
+	GetPvzList(ctx context.Context, limit, offset int, startDate, endDate *time.Time) ([]response.PvzFullResponse, error)
 }
 
 type Reception interface {
@@ -35,11 +39,11 @@ type Service struct {
 	Product
 }
 
-func NewService(repos *repository.Repository) *Service {
+func NewService(repos *repository.Repository, log logger.Logger) *Service {
 	return &Service{
-		User:      NewUserService(repos.User),
-		Pvz:       NewPvzService(repos.Pvz),
-		Reception: NewReceptionService(repos.Reception),
-		Product:   NewProductService(repos.Product, repos.Reception),
+		User:      NewUserService(repos.User, log),
+		Pvz:       NewPvzService(repos.Pvz, repos.Reception, repos.Product, log),
+		Reception: NewReceptionService(repos.Reception, log),
+		Product:   NewProductService(repos.Product, repos.Reception, log),
 	}
 }

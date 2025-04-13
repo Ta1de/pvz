@@ -7,8 +7,8 @@ import (
 )
 
 type Product struct {
-	Id          uuid.UUID
-	DateTime    time.Time
-	Type        string
-	ReceptionId uuid.UUID
+	Id          uuid.UUID `db:"id"`
+	DateTime    time.Time `db:"datetime"`
+	Type        string    `db:"type"`
+	ReceptionId uuid.UUID `db:"receptionid"`
 }

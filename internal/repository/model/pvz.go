@@ -7,7 +7,7 @@ import (
 )
 
 type Pvz struct {
-	Id               uuid.UUID
-	RegistrationDate time.Time
-	City             string
+	Id               uuid.UUID `db:"id"`
+	RegistrationDate time.Time `db:"registrationdate"`
+	City             string    `db:"city"`
 }

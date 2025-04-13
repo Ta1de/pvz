@@ -11,18 +11,18 @@ import (
 	"pvz/internal/repository/model"
 )
 
-func AuthMiddleware(requiredRole string) gin.HandlerFunc {
+func AuthMiddleware(roles ...string) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		authHeader := c.GetHeader("Authorization")
 		if authHeader == "" {
-			logger.SugaredLogger.Warn("Authorization header missing")
+			logger.Log.Warnw("Authorization header missing")
 			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "missing token"})
 			return
 		}
 
 		tokenStr := strings.TrimPrefix(authHeader, "Bearer ")
 		if tokenStr == authHeader {
-			logger.SugaredLogger.Warnw("Token format is invalid", "token", tokenStr)
+			logger.Log.Warnw("Token format is invalid", "token", tokenStr)
 			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "invalid token format"})
 			return
 		}
@@ -31,21 +31,28 @@ func AuthMiddleware(requiredRole string) gin.HandlerFunc {
 			return []byte(os.Getenv("SIGNING_KEY")), nil
 		})
 		if err != nil || !token.Valid {
-			logger.SugaredLogger.Warnw("Invalid or expired token", "error", err)
+			logger.Log.Warnw("Invalid or expired token", "error", err)
 			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "invalid token"})
 			return
 		}
 
 		claims, ok := token.Claims.(*model.TokenClaims)
-		if !ok || claims.Role != requiredRole {
-			logger.SugaredLogger.Warnw("Access forbidden", "requiredRole", requiredRole, "claims", claims)
-			c.AbortWithStatusJSON(http.StatusForbidden, gin.H{"error": "access denied"})
+		if !ok {
+			logger.Log.Warnw("Invalid token claims")
+			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "invalid token claims"})
 			return
 		}
 
-		logger.SugaredLogger.Infow("Token verified", "userId", claims.UserId, "role", claims.Role)
-		c.Set("userClaims", claims)
+		for _, role := range roles {
+			if claims.Role == role {
+				logger.Log.Infow("Token verified", "userId", claims.UserId, "role", claims.Role)
+				c.Set("userClaims", claims)
+				c.Next()
+				return
+			}
+		}
 
-		c.Next()
+		logger.Log.Warnw("Access forbidden", "allowedRoles", roles, "claims", claims)
+		c.AbortWithStatusJSON(http.StatusForbidden, gin.H{"error": "access denied"})
 	}
 }

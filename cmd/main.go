@@ -20,20 +20,25 @@ import (
 func main() {
 	gin.SetMode(gin.ReleaseMode)
 
+	// Инициализация логгера
 	if err := logger.Init(); err != nil {
 		log.Fatalf("Logger initialization error: %v", err)
 	}
-	defer logger.Logger.Sync()
-	logger.SugaredLogger.Info("The application is running")
+	defer logger.Log.Sync()
 
+	logger.Log.Infow("The application is running")
+
+	// Загрузка конфигурации
 	if err := initConfig(); err != nil {
-		logger.SugaredLogger.Fatalw("Error initializing configs", "error", err)
+		logger.Log.Fatalw("Error initializing configs", "error", err)
 	}
 
+	// Загрузка .env файла
 	if err := godotenv.Load(); err != nil {
-		logger.SugaredLogger.Fatalw("Error loading env file", "error", err)
+		logger.Log.Fatalw("Error loading env file", "error", err)
 	}
 
+	// Инициализация БД
 	postgresDb, err := db.NewPostgresDB(db.Config{
 		Host:     viper.GetString("db.host"),
 		Port:     viper.GetString("db.port"),
@@ -43,16 +48,18 @@ func main() {
 		SSLMode:  viper.GetString("db.sslmode"),
 	})
 	if err != nil {
-		logger.SugaredLogger.Fatalw("Failed initializing DB", "error", err)
+		logger.Log.Fatalw("Failed initializing DB", "error", err)
 	}
 
-	repos := repository.NewRepositore(postgresDb)
-	services := service.NewService(repos)
-	handlers := handler.NewHandler(services)
+	// Инициализация слоев приложения
+	repos := repository.NewRepository(postgresDb, logger.Log)
+	services := service.NewService(repos, logger.Log)
+	handlers := handler.NewHandler(services, logger.Log)
 
+	// Запуск сервера
 	srv := new(server.Server)
 	if err := srv.Run(viper.GetString("port"), handlers.InitRoutes()); err != nil {
-		logger.SugaredLogger.Fatalw("Error occurred while running server", "error", err)
+		logger.Log.Fatalw("Error occurred while running server", "error", err)
 	}
 }
 

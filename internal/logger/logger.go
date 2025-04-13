@@ -9,9 +9,24 @@ import (
 	"go.uber.org/zap/zapcore"
 )
 
-var Logger *zap.Logger
-var SugaredLogger *zap.SugaredLogger
+// Logger - интерфейс логгера
+type Logger interface {
+	Infow(msg string, keysAndValues ...interface{})
+	Errorw(msg string, keysAndValues ...interface{})
+	Fatalw(msg string, keysAndValues ...interface{})
+	Warnw(msg string, keysAndValues ...interface{})
+	Sync() error
+}
 
+type ZapSugaredLogger struct {
+	Logger *zap.SugaredLogger // Делаем поле экспортируемым
+}
+
+var (
+	Log Logger
+)
+
+// Init инициализирует глобальный логгер
 func Init() error {
 	logFile := &lumberjack.Logger{
 		Filename:   "log/app.log",
@@ -41,15 +56,36 @@ func Init() error {
 		zapcore.NewCore(consoleEncoder, zapcore.AddSync(os.Stdout), zapcore.DebugLevel),
 	)
 
-	Logger = zap.New(core, zap.AddCaller())
-	SugaredLogger = Logger.Sugar()
+	zapLogger := zap.New(core, zap.AddCaller())
+	sugared := zapLogger.Sugar()
 
-	zap.ReplaceGlobals(Logger)
+	Log = &ZapSugaredLogger{Logger: sugared}
+	zap.ReplaceGlobals(zapLogger)
 
 	return nil
 }
 
+func (z *ZapSugaredLogger) Infow(msg string, keysAndValues ...interface{}) {
+	z.Logger.Infow(msg, keysAndValues...)
+}
+
+func (z *ZapSugaredLogger) Errorw(msg string, keysAndValues ...interface{}) {
+	z.Logger.Errorw(msg, keysAndValues...)
+}
+
+func (z *ZapSugaredLogger) Fatalw(msg string, keysAndValues ...interface{}) {
+	z.Logger.Fatalw(msg, keysAndValues...)
+}
+
+func (z *ZapSugaredLogger) Warnw(msg string, keysAndValues ...interface{}) {
+	z.Logger.Warnw(msg, keysAndValues...)
+}
+
+func (z *ZapSugaredLogger) Sync() error {
+	return z.Logger.Sync()
+}
+
 func customTimeEncoder(t time.Time, enc zapcore.PrimitiveArrayEncoder) {
-	formatted := t.Format("2006-01-02 15-04-05")
+	formatted := t.Format("2006-01-02 15:04:05")
 	enc.AppendString(formatted)
 }

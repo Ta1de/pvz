@@ -7,8 +7,8 @@ import (
 )
 
 type Reception struct {
-	Id       uuid.UUID
-	DateTime time.Time
-	PvzId    uuid.UUID
-	Status   string
+	Id       uuid.UUID `db:"id"`
+	DateTime time.Time `db:"datetime"`
+	PvzId    uuid.UUID `db:"pvzid"`
+	Status   string    `db:"status"`
 }

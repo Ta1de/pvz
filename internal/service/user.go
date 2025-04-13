@@ -17,16 +17,20 @@ const tokenTTL = time.Hour * 24
 
 type UserService struct {
 	repoUser repository.User
+	logger   logger.Logger
 }
 
-func NewUserService(repoUser repository.User) *UserService {
-	return &UserService{repoUser: repoUser}
+func NewUserService(repoUser repository.User, log logger.Logger) *UserService {
+	return &UserService{
+		repoUser: repoUser,
+		logger:   log,
+	}
 }
 
 func (s *UserService) CreateUser(ctx context.Context, user model.User) (model.User, error) {
 	hashedPassword, err := GeneratePasswordHash(user.Password)
 	if err != nil {
-		logger.SugaredLogger.Errorw("Password hashing failed", "error", err)
+		s.logger.Errorw("Password hashing failed", "error", err)
 		return model.User{}, fmt.Errorf("could not hash password: %w", err)
 	}
 
@@ -38,7 +42,7 @@ func (s *UserService) CreateUser(ctx context.Context, user model.User) (model.Us
 	}
 
 	user.Id = id
-	logger.SugaredLogger.Infow("User successfully created", "userID", user.Id, "email", user.Email)
+	s.logger.Infow("User successfully created", "userID", user.Id, "email", user.Email)
 	return user, nil
 }
 
@@ -58,7 +62,7 @@ func (s *UserService) LoginUser(ctx context.Context, email, password string) (st
 	}
 
 	if err = bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(password)); err != nil {
-		logger.SugaredLogger.Warnw("Incorrect password attempt", "email", email)
+		s.logger.Warnw("Incorrect password attempt", "email", email)
 		return "", fmt.Errorf("invalid credentials")
 	}
 
@@ -75,11 +79,11 @@ func (s *UserService) LoginUser(ctx context.Context, email, password string) (st
 
 	signedToken, err := token.SignedString([]byte(os.Getenv("SIGNING_KEY")))
 	if err != nil {
-		logger.SugaredLogger.Errorw("Failed to sign JWT", "userID", user.Id, "error", err)
+		s.logger.Errorw("Failed to sign JWT", "userID", user.Id, "error", err)
 		return "", fmt.Errorf("could not sign token: %w", err)
 	}
 
-	logger.SugaredLogger.Infow("User authentication successful", "userID", user.Id, "email", user.Email)
+	s.logger.Infow("User authentication successful", "userID", user.Id, "email", user.Email)
 	return signedToken, nil
 }
 
@@ -96,10 +100,10 @@ func (s *UserService) DummyLogin(ctx context.Context, role string) (string, erro
 
 	signedToken, err := token.SignedString([]byte(os.Getenv("SIGNING_KEY")))
 	if err != nil {
-		logger.SugaredLogger.Errorw("Failed to sign dummy token", "role", role, "error", err)
+		s.logger.Errorw("Failed to sign dummy token", "role", role, "error", err)
 		return "", fmt.Errorf("could not sign token: %w", err)
 	}
 
-	logger.SugaredLogger.Infow("Dummy token created", "role", role)
+	s.logger.Infow("Dummy token created", "role", role)
 	return signedToken, nil
 }
