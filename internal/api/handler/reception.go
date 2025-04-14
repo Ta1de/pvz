@@ -10,12 +10,21 @@ import (
 	"pvz/internal/api/response"
 )
 
-func (h *Handler) createReception(c *gin.Context) {
+func (h *Handler) CreateReception(c *gin.Context) {
 	var req response.ReceptionRequest
 
 	if err := c.ShouldBindJSON(&req); err != nil {
 		h.logger.Warnw("Invalid input data for reception creation", "error", err)
 		c.JSON(http.StatusBadRequest, gin.H{"message": "Invalid input data", "error": err.Error()})
+		return
+	}
+
+	if _, err := uuid.Parse(req.PvzId); err != nil {
+		h.logger.Warnw("Invalid input data for reception creation", "error", err)
+		c.JSON(http.StatusBadRequest, gin.H{
+			"message": "Invalid input data",
+			"error":   "PvzId is not a valid UUID",
+		})
 		return
 	}
 
@@ -34,7 +43,7 @@ func (h *Handler) createReception(c *gin.Context) {
 	c.JSON(http.StatusCreated, resp)
 }
 
-func (h *Handler) closeReception(c *gin.Context) {
+func (h *Handler) CloseReception(c *gin.Context) {
 	pvzIdParam := c.Param("pvzId")
 	pvzId, err := uuid.Parse(pvzIdParam)
 	if err != nil {

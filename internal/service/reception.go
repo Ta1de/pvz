@@ -8,6 +8,7 @@ import (
 	"pvz/internal/logger"
 	"pvz/internal/repository"
 	"pvz/internal/repository/model"
+	"pvz/metrics"
 )
 
 type ReceptionService struct {
@@ -41,7 +42,7 @@ func (s *ReceptionService) CreateReception(ctx context.Context, pvzId uuid.UUID)
 		s.logger.Errorw("Failed to create reception in service", "pvzId", pvzId, "error", err)
 		return model.Reception{}, err
 	}
-
+	metrics.CreatedReceptions.Inc()
 	s.logger.Infow("Successfully created reception", "receptionId", reception.Id)
 	return reception, nil
 }

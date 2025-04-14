@@ -8,6 +8,7 @@ import (
 	"pvz/internal/logger"
 	"pvz/internal/repository"
 	"pvz/internal/repository/model"
+	"pvz/metrics"
 )
 
 type ProductService struct {
@@ -43,6 +44,7 @@ func (s *ProductService) AddProduct(ctx context.Context, pvzId uuid.UUID, produc
 		s.logger.Errorw("Failed to create product", "product", product, "error", err)
 		return model.Product{}, fmt.Errorf("failed to create product: %w", err)
 	}
+	metrics.ProductsAdded.Inc()
 
 	s.logger.Infow("Product created successfully", "productId", created.Id, "receptionId", created.ReceptionId)
 	return created, nil

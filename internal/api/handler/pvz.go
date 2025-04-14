@@ -12,7 +12,7 @@ import (
 	"pvz/internal/logger"
 )
 
-func (h *Handler) createPvz(c *gin.Context) {
+func (h *Handler) CreatePvz(c *gin.Context) {
 	var req response.PvzRequest
 
 	if err := c.ShouldBindJSON(&req); err != nil {
@@ -38,7 +38,7 @@ func (h *Handler) createPvz(c *gin.Context) {
 	c.JSON(http.StatusCreated, PvzResponse)
 }
 
-func (h *Handler) getPvz(c *gin.Context) {
+func (h *Handler) GetPvz(c *gin.Context) {
 	limitStr := c.DefaultQuery("limit", "10")
 	offsetStr := c.DefaultQuery("offset", "0")
 	startDateStr := c.Query("startDate")
@@ -64,7 +64,7 @@ func (h *Handler) getPvz(c *gin.Context) {
 	var startDate, endDate *time.Time
 
 	if startDateStr != "" {
-		t, err := parseFlexibleTime(startDateStr)
+		t, err := ParseFlexibleTime(startDateStr)
 		if err != nil {
 			h.logger.Warnw("Invalid startDate", "startDate", startDateStr, "error", err)
 			c.JSON(http.StatusBadRequest, gin.H{"error": "invalid startDate"})
@@ -74,7 +74,7 @@ func (h *Handler) getPvz(c *gin.Context) {
 	}
 
 	if endDateStr != "" {
-		t, err := parseFlexibleTime(endDateStr)
+		t, err := ParseFlexibleTime(endDateStr)
 		if err != nil {
 			h.logger.Warnw("Invalid endDate", "endDate", endDateStr, "error", err)
 			c.JSON(http.StatusBadRequest, gin.H{"error": "invalid endDate"})
@@ -94,7 +94,7 @@ func (h *Handler) getPvz(c *gin.Context) {
 	c.JSON(http.StatusOK, result)
 }
 
-func parseFlexibleTime(str string) (*time.Time, error) {
+func ParseFlexibleTime(str string) (*time.Time, error) {
 	formats := []string{
 		"2006-01-02 15:04:05.999999",
 		"2006-01-02 15:04:05.99999",

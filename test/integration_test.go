@@ -90,6 +90,11 @@ func createPvz(t *testing.T, token string) string {
 		t.Fatalf("Ошибка при декодировании ответа: %v", err)
 	}
 
+	id, ok := result["id"]
+	if !ok || id == "" {
+		t.Fatal("Ответ не содержит 'id'")
+	}
+
 	return result["id"]
 }
 

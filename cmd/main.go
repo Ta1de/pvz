@@ -12,6 +12,7 @@ import (
 	"pvz/internal/logger"
 	"pvz/internal/repository"
 	"pvz/internal/service"
+	"pvz/metrics"
 	"pvz/server"
 
 	"github.com/spf13/viper"
@@ -19,6 +20,7 @@ import (
 
 func main() {
 	gin.SetMode(gin.ReleaseMode)
+	metrics.Init()
 
 	// Инициализация логгера
 	if err := logger.Init(); err != nil {

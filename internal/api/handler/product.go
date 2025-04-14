@@ -10,7 +10,7 @@ import (
 	"pvz/internal/api/response"
 )
 
-func (h *Handler) addProduct(c *gin.Context) {
+func (h *Handler) AddProduct(c *gin.Context) {
 	var req response.ProductRequest
 
 	if err := c.ShouldBindJSON(&req); err != nil {
@@ -40,7 +40,7 @@ func (h *Handler) addProduct(c *gin.Context) {
 	c.JSON(http.StatusOK, productResponse)
 }
 
-func (h *Handler) deleteLastProduct(c *gin.Context) {
+func (h *Handler) DeleteLastProduct(c *gin.Context) {
 	pvzIdParam := c.Param("pvzId")
 	pvzId, err := uuid.Parse(pvzIdParam)
 	if err != nil {

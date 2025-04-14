@@ -9,6 +9,7 @@ import (
 	"pvz/internal/logger"
 	"pvz/internal/repository"
 	"pvz/internal/repository/model"
+	"pvz/metrics"
 )
 
 type PvzService struct {
@@ -36,7 +37,7 @@ func (s *PvzService) CreatePvz(ctx context.Context, pvz model.Pvz) (model.Pvz, e
 		s.logger.Errorw("Service failed to create PVZ", "city", pvz.City, "error", err)
 		return model.Pvz{}, fmt.Errorf("error creating PVZ: %w", err)
 	}
-
+	metrics.CreatedPvz.Inc()
 	s.logger.Infow("Service successfully created PVZ", "pvz", pvz)
 	return pvz, nil
 }
