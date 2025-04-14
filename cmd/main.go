@@ -4,9 +4,6 @@ import (
 	"log"
 	"os"
 
-	"github.com/gin-gonic/gin"
-	"github.com/joho/godotenv"
-	_ "github.com/lib/pq"
 	"pvz/internal/api/handler"
 	"pvz/internal/db"
 	"pvz/internal/logger"
@@ -14,6 +11,10 @@ import (
 	"pvz/internal/service"
 	"pvz/metrics"
 	"pvz/server"
+
+	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
+	_ "github.com/lib/pq"
 
 	"github.com/spf13/viper"
 )
@@ -42,12 +43,12 @@ func main() {
 
 	// Инициализация БД
 	postgresDb, err := db.NewPostgresDB(db.Config{
-		Host:     viper.GetString("db.host"),
-		Port:     viper.GetString("db.port"),
-		Username: viper.GetString("db.username"),
-		Password: os.Getenv("PostgresPassword"),
-		DBName:   viper.GetString("db.dbname"),
-		SSLMode:  viper.GetString("db.sslmode"),
+		Host:     os.Getenv("DB_HOST"),
+		Port:     os.Getenv("DB_PORT"),
+		Username: os.Getenv("POSTGRES_USER"),
+		Password: os.Getenv("POSTGRES_PASSWORD"),
+		DBName:   os.Getenv("POSTGRES_DB"),
+		SSLMode:  os.Getenv("SSL_MODE"),
 	})
 	if err != nil {
 		logger.Log.Fatalw("Failed initializing DB", "error", err)

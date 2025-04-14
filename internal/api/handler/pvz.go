@@ -100,6 +100,7 @@ func ParseFlexibleTime(str string) (*time.Time, error) {
 		"2006-01-02 15:04:05.99999",
 		"2006-01-02 15:04:05.9999",
 		"2006-01-02 15:04:05",
+		time.RFC3339,
 	}
 	for _, layout := range formats {
 		if t, err := time.Parse(layout, str); err == nil {

@@ -7,6 +7,7 @@ import (
 	"errors"
 	"net/http"
 	"net/http/httptest"
+	"net/url"
 	"testing"
 	"time"
 
@@ -154,74 +155,77 @@ func TestHandler_CreatePvz_ServiceError(t *testing.T) {
 	mockLogger.AssertExpectations(t)
 }
 
-//func TestHandler_GetPvz_Success(t *testing.T) {
-//	ctrl := gomock.NewController(t)
-//	defer ctrl.Finish()
-//
-//	mockPvzService := mocks.NewMockPvz(ctrl)
-//	mockLogger := new(mocks.MockLogger)
-//
-//	services := &service.Service{Pvz: mockPvzService}
-//	h := handler.NewHandler(services, mockLogger)
-//
-//	// Test data
-//	limit := 10
-//	offset := 0
-//	startDate := time.Now().Add(-24 * time.Hour)
-//	endDate := time.Now()
-//
-//	expectedResult := []response.PvzFullResponse{
-//		{
-//			Pvz: response.PvzResponse{
-//				Id:               uuid.New().String(),
-//				RegistrationDate: time.Now().Format(time.RFC3339),
-//				City:             "Moscow",
-//			},
-//			Receptions: []response.ReceptionWrapper{
-//				{
-//					Reception: response.ReceptionResponse{
-//						Id:     uuid.New().String(),
-//						PvzId:  uuid.New().String(),
-//						Status: "open",
-//					},
-//					Products: []response.ProductResponse{
-//						{
-//							Id:          uuid.New().String(),
-//							ReceptionId: uuid.New().String(),
-//							Type:        "package",
-//						},
-//					},
-//				},
-//			},
-//		},
-//	}
-//
-//	// Mock expectations
-//	mockPvzService.EXPECT().
-//		GetPvzList(gomock.Any(), limit, offset, &startDate, &endDate).
-//		Return(expectedResult, nil)
-//
-//	mockLogger.On("Infow", "Received request for Pvz list",
-//		"limit", "10", "offset", "0", "startDate", startDate.Format(time.RFC3339), "endDate", endDate.Format(time.RFC3339)).Once()
-//	mockLogger.On("Infow", "Successfully retrieved Pvz list", "count", len(expectedResult)).Once()
-//
-//	// Execute
-//	w := httptest.NewRecorder()
-//	ctx, _ := gin.CreateTestContext(w)
-//	ctx.Request = httptest.NewRequest(http.MethodGet, "/pvz?limit=10&offset=0&startDate="+url.QueryEscape(startDate.Format(time.RFC3339))+"&endDate="+url.QueryEscape(endDate.Format(time.RFC3339)), nil)
-//
-//	h.GetPvz(ctx)
-//
-//	// Verify
-//	assert.Equal(t, http.StatusOK, w.Code)
-//
-//	var resp []response.PvzFullResponse
-//	err := json.Unmarshal(w.Body.Bytes(), &resp)
-//	assert.NoError(t, err)
-//	assert.Equal(t, expectedResult, resp)
-//
-//	mockLogger.AssertExpectations(t)
-//}
+func TestHandler_GetPvz_Success(t *testing.T) {
+	ctrl := gomock.NewController(t)
+	defer ctrl.Finish()
+
+	mockPvzService := mocks.NewMockPvz(ctrl)
+	mockLogger := new(mocks.MockLogger)
+
+	services := &service.Service{Pvz: mockPvzService}
+	h := handler.NewHandler(services, mockLogger)
+
+	// Test data
+	limit := 10
+	offset := 0
+	startDateStr := time.Now().Add(-24 * time.Hour).Format(time.RFC3339)
+	endDateStr := time.Now().Format(time.RFC3339)
+
+	startDate, _ := time.Parse(time.RFC3339, startDateStr)
+	endDate, _ := time.Parse(time.RFC3339, endDateStr)
+
+	expectedResult := []response.PvzFullResponse{
+		{
+			Pvz: response.PvzResponse{
+				Id:               uuid.New().String(),
+				RegistrationDate: time.Now().Format(time.RFC3339),
+				City:             "Moscow",
+			},
+			Receptions: []response.ReceptionWrapper{
+				{
+					Reception: response.ReceptionResponse{
+						Id:     uuid.New().String(),
+						PvzId:  uuid.New().String(),
+						Status: "open",
+					},
+					Products: []response.ProductResponse{
+						{
+							Id:          uuid.New().String(),
+							ReceptionId: uuid.New().String(),
+							Type:        "package",
+						},
+					},
+				},
+			},
+		},
+	}
+
+	// Mock expectations - важно передать указатели на time.Time
+	mockPvzService.EXPECT().
+		GetPvzList(gomock.Any(), limit, offset, &startDate, &endDate).
+		Return(expectedResult, nil)
+
+	mockLogger.On("Infow", "Received request for Pvz list",
+		"limit", "10", "offset", "0", "startDate", startDateStr, "endDate", endDateStr).Once()
+	mockLogger.On("Infow", "Successfully retrieved Pvz list", "count", len(expectedResult)).Once()
+
+	// Execute
+	w := httptest.NewRecorder()
+	ctx, _ := gin.CreateTestContext(w)
+	ctx.Request = httptest.NewRequest(http.MethodGet, "/pvz?limit=10&offset=0&startDate="+url.QueryEscape(startDateStr)+"&endDate="+url.QueryEscape(endDateStr), nil)
+
+	h.GetPvz(ctx)
+
+	// Verify
+	assert.Equal(t, http.StatusOK, w.Code)
+
+	var resp []response.PvzFullResponse
+	err := json.Unmarshal(w.Body.Bytes(), &resp)
+	assert.NoError(t, err)
+	assert.Equal(t, expectedResult, resp)
+
+	mockLogger.AssertExpectations(t)
+}
 
 func TestHandler_GetPvz_InvalidLimit(t *testing.T) {
 	ctrl := gomock.NewController(t)
@@ -251,37 +255,6 @@ func TestHandler_GetPvz_InvalidLimit(t *testing.T) {
 
 	mockLogger.AssertExpectations(t)
 }
-
-//func TestHandler_GetPvz_InvalidDate(t *testing.T) {
-//	ctrl := gomock.NewController(t)
-//	defer ctrl.Finish()
-//
-//	mockPvzService := mocks.NewMockPvz(ctrl)
-//	mockLogger := new(mocks.MockLogger)
-//
-//	services := &service.Service{Pvz: mockPvzService}
-//	h := handler.NewHandler(services, mockLogger)
-//
-//	invalidDate := "invalid-date"
-//
-//	// Mock expectations
-//	mockLogger.On("Infow", "Received request for Pvz list",
-//		"limit", "10", "offset", "0", "startDate", invalidDate, "endDate", "").Once()
-//	mockLogger.On("Warnw", "Invalid startDate", "startDate", invalidDate, "error", mock.Anything).Once()
-//
-//	// Execute
-//	w := httptest.NewRecorder()
-//	ctx, _ := gin.CreateTestContext(w)
-//	ctx.Request = httptest.NewRequest(http.MethodGet, "/pvz?limit=10&offset=0&startDate="+invalidDate, nil)
-//
-//	h.GetPvz(ctx)
-//
-//	// Verify
-//	assert.Equal(t, http.StatusBadRequest, w.Code)
-//	assert.Contains(t, w.Body.String(), "invalid startDate")
-//
-//	mockLogger.AssertExpectations(t)
-//}
 
 func TestHandler_GetPvz_ServiceError(t *testing.T) {
 	ctrl := gomock.NewController(t)
