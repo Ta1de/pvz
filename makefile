@@ -18,3 +18,6 @@ cover_html:
 
 inter_test:
 	go test test/integration_test.go
+
+docker_run:
+	docker compose up -d
