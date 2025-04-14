@@ -11,3 +11,11 @@
 2025-04-14 17:05:53	INFO	logger/logger.go:69	The application is running
 2025-04-14 17:05:53	FATAL	logger/logger.go:77	Failed initializing DB	{"error": "pq: password authentication failed for user \"postgres\""}
 2025-04-14 17:08:12	INFO	logger/logger.go:69	The application is running
+2025-04-14 17:38:51	INFO	logger/logger.go:69	The application is running
+2025-04-14 17:51:16	INFO	logger/logger.go:69	The application is running
+2025-04-14 17:51:16	FATAL	logger/logger.go:77	Failed initializing DB	{"error": "pq: SSL is not enabled on the server"}
+2025-04-14 17:51:26	INFO	logger/logger.go:69	The application is running
+2025-04-14 17:51:26	FATAL	logger/logger.go:77	Failed initializing DB	{"error": "pq: SSL is not enabled on the server"}
+2025-04-14 17:51:47	INFO	logger/logger.go:69	The application is running
+2025-04-14 17:51:52	INFO	logger/logger.go:69	The application is running
+2025-04-14 17:52:34	INFO	logger/logger.go:69	The application is running
