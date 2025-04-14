@@ -1,0 +1,13 @@
+2025-04-14 17:03:18	INFO	logger/logger.go:69	The application is running
+2025-04-14 17:03:18	FATAL	logger/logger.go:77	Failed initializing DB	{"error": "dial tcp [::1]:5432: connect: connection refused"}
+2025-04-14 17:03:42	INFO	logger/logger.go:69	The application is running
+2025-04-14 17:03:42	FATAL	logger/logger.go:77	Failed initializing DB	{"error": "dial tcp [::1]:5432: connect: connection refused"}
+2025-04-14 17:04:46	INFO	logger/logger.go:69	The application is running
+2025-04-14 17:04:46	FATAL	logger/logger.go:77	Failed initializing DB	{"error": "pq: password authentication failed for user \"postgres\""}
+2025-04-14 17:05:30	INFO	logger/logger.go:69	The application is running
+2025-04-14 17:05:30	FATAL	logger/logger.go:77	Failed initializing DB	{"error": "dial tcp [::1]:5432: connect: connection refused"}
+2025-04-14 17:05:46	INFO	logger/logger.go:69	The application is running
+2025-04-14 17:05:46	FATAL	logger/logger.go:77	Failed initializing DB	{"error": "dial tcp [::1]:5432: connect: connection refused"}
+2025-04-14 17:05:53	INFO	logger/logger.go:69	The application is running
+2025-04-14 17:05:53	FATAL	logger/logger.go:77	Failed initializing DB	{"error": "pq: password authentication failed for user \"postgres\""}
+2025-04-14 17:08:12	INFO	logger/logger.go:69	The application is running
